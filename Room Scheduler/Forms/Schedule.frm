@@ -26,7 +26,7 @@ Begin VB.Form Schedule
       Left            =   2760
       TabIndex        =   6
       Top             =   1520
-      Width           =   3615
+      Width           =   3625
    End
    Begin VB.ComboBox sec_sched 
       Appearance      =   0  'Flat
@@ -43,7 +43,7 @@ Begin VB.Form Schedule
       Left            =   2770
       TabIndex        =   5
       Top             =   5050
-      Width           =   3610
+      Width           =   3625
    End
    Begin VB.ComboBox subj_sched 
       Appearance      =   0  'Flat
@@ -60,7 +60,7 @@ Begin VB.Form Schedule
       Left            =   2760
       TabIndex        =   4
       Top             =   4350
-      Width           =   3615
+      Width           =   3625
    End
    Begin VB.ComboBox room_sched 
       Appearance      =   0  'Flat
@@ -77,15 +77,15 @@ Begin VB.Form Schedule
       Left            =   2760
       TabIndex        =   3
       Top             =   3650
-      Width           =   3615
+      Width           =   3625
    End
-   Begin MSComCtl2.DTPicker end_time 
+   Begin MSComCtl2.DTPicker end_date 
       Height          =   375
       Left            =   2760
       TabIndex        =   2
       Top             =   2925
-      Width           =   3645
-      _ExtentX        =   6429
+      Width           =   2200
+      _ExtentX        =   3889
       _ExtentY        =   661
       _Version        =   393216
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -98,17 +98,40 @@ Begin VB.Form Schedule
          Strikethrough   =   0   'False
       EndProperty
       CalendarTrailingForeColor=   7171437
-      CustomFormat    =   "MM/dd/yyyy hh:mm:ss tt"
-      Format          =   126943235
+      CustomFormat    =   "MM/dd/yyyy"
+      Format          =   123011075
       CurrentDate     =   40418.5
+   End
+   Begin MSComCtl2.DTPicker start_date 
+      Height          =   375
+      Left            =   2775
+      TabIndex        =   1
+      Top             =   2205
+      Width           =   2170
+      _ExtentX        =   3836
+      _ExtentY        =   661
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CalendarTrailingForeColor=   7171437
+      CustomFormat    =   "MM/dd/yyyy"
+      Format          =   123011075
+      CurrentDate     =   40418
    End
    Begin MSComCtl2.DTPicker start_time 
       Height          =   375
-      Left            =   2780
-      TabIndex        =   1
-      Top             =   2205
-      Width           =   3600
-      _ExtentX        =   6350
+      Left            =   4950
+      TabIndex        =   7
+      Top             =   2190
+      Width           =   1440
+      _ExtentX        =   2540
       _ExtentY        =   661
       _Version        =   393216
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -121,11 +144,35 @@ Begin VB.Form Schedule
          Strikethrough   =   0   'False
       EndProperty
       CalendarTrailingForeColor=   7171437
-      CustomFormat    =   "MM/dd/yyyy hh:mm:ss tt"
-      Format          =   126943235
+      CustomFormat    =   "hh:mm:ss tt"
+      Format          =   123011075
+      CurrentDate     =   40418
+   End
+   Begin MSComCtl2.DTPicker end_time 
+      Height          =   375
+      Left            =   4950
+      TabIndex        =   8
+      Top             =   2930
+      Width           =   1440
+      _ExtentX        =   2540
+      _ExtentY        =   661
+      _Version        =   393216
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      CalendarTrailingForeColor=   7171437
+      CustomFormat    =   "hh:mm:ss tt"
+      Format          =   123011075
       CurrentDate     =   40418
    End
    Begin VB.Label Label1 
+      Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
@@ -164,25 +211,22 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim state As String
-
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Schedule"
     Schedule.Caption = state + " Schedule"
+    end_time.UpDown = True
+    start_time.UpDown = True
 End Sub
-
-
 Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
-
 Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
 Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
-
 Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
@@ -197,5 +241,3 @@ Private Sub Image1_Click()
     MainForm.Label2.Visible = True
     Unload Me
 End Sub
-
-

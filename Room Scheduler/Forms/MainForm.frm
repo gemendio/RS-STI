@@ -1,7 +1,6 @@
 VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form MainForm 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
@@ -29,55 +28,7 @@ Begin VB.Form MainForm
       Left            =   2400
       Top             =   1560
    End
-   Begin MSAdodcLib.Adodc Adodc5 
-      Height          =   375
-      Left            =   3000
-      Top             =   9480
-      Visible         =   0   'False
-      Width           =   1200
-      _ExtentX        =   2117
-      _ExtentY        =   661
-      ConnectMode     =   0
-      CursorLocation  =   3
-      IsolationLevel  =   -1
-      ConnectionTimeout=   15
-      CommandTimeout  =   30
-      CursorType      =   3
-      LockType        =   3
-      CommandType     =   8
-      CursorOptions   =   0
-      CacheSize       =   50
-      MaxRecords      =   0
-      BOFAction       =   0
-      EOFAction       =   0
-      ConnectStringType=   3
-      Appearance      =   1
-      BackColor       =   -2147483643
-      ForeColor       =   -2147483640
-      Orientation     =   0
-      Enabled         =   -1
-      Connect         =   "DSN=STI"
-      OLEDBString     =   ""
-      OLEDBFile       =   ""
-      DataSourceName  =   "STI"
-      OtherAttributes =   ""
-      UserName        =   "root"
-      Password        =   "amirah@1"
-      RecordSource    =   $"MainForm.frx":3F5FC
-      Caption         =   "Adodc5"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Bernard MT Condensed"
-         Size            =   18
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      _Version        =   393216
-   End
    Begin MSDataGridLib.DataGrid DataGrid5 
-      Bindings        =   "MainForm.frx":3F73C
       Height          =   6015
       Left            =   5040
       TabIndex        =   5
@@ -224,55 +175,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSAdodcLib.Adodc Adodc4 
-      Height          =   330
-      Left            =   3000
-      Top             =   9120
-      Visible         =   0   'False
-      Width           =   1215
-      _ExtentX        =   2143
-      _ExtentY        =   582
-      ConnectMode     =   0
-      CursorLocation  =   3
-      IsolationLevel  =   -1
-      ConnectionTimeout=   15
-      CommandTimeout  =   30
-      CursorType      =   3
-      LockType        =   3
-      CommandType     =   8
-      CursorOptions   =   0
-      CacheSize       =   50
-      MaxRecords      =   0
-      BOFAction       =   0
-      EOFAction       =   0
-      ConnectStringType=   3
-      Appearance      =   1
-      BackColor       =   -2147483643
-      ForeColor       =   -2147483640
-      Orientation     =   0
-      Enabled         =   -1
-      Connect         =   "DSN=STI"
-      OLEDBString     =   ""
-      OLEDBFile       =   ""
-      DataSourceName  =   "STI"
-      OtherAttributes =   ""
-      UserName        =   "root"
-      Password        =   "amirah@1"
-      RecordSource    =   $"MainForm.frx":3F751
-      Caption         =   "Adodc4"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Bernard MT Condensed"
-         Size            =   18
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      _Version        =   393216
-   End
    Begin MSDataGridLib.DataGrid DataGrid4 
-      Bindings        =   "MainForm.frx":3F7F6
       Height          =   6015
       Left            =   5040
       TabIndex        =   4
@@ -355,55 +258,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSAdodcLib.Adodc Adodc3 
-      Height          =   330
-      Left            =   2880
-      Top             =   8760
-      Visible         =   0   'False
-      Width           =   1200
-      _ExtentX        =   2117
-      _ExtentY        =   582
-      ConnectMode     =   0
-      CursorLocation  =   3
-      IsolationLevel  =   -1
-      ConnectionTimeout=   15
-      CommandTimeout  =   30
-      CursorType      =   3
-      LockType        =   3
-      CommandType     =   8
-      CursorOptions   =   0
-      CacheSize       =   50
-      MaxRecords      =   0
-      BOFAction       =   0
-      EOFAction       =   0
-      ConnectStringType=   3
-      Appearance      =   1
-      BackColor       =   -2147483643
-      ForeColor       =   -2147483640
-      Orientation     =   0
-      Enabled         =   -1
-      Connect         =   "DSN=STI"
-      OLEDBString     =   ""
-      OLEDBFile       =   ""
-      DataSourceName  =   "STI"
-      OtherAttributes =   ""
-      UserName        =   "root"
-      Password        =   "amirah@1"
-      RecordSource    =   "SELECT id as ID, last_name as 'Last Name', first_name as 'First Name', middle_name as 'Middle Name', type as Type FROM users"
-      Caption         =   "Adodc3"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Bernard MT Condensed"
-         Size            =   18
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      _Version        =   393216
-   End
    Begin MSDataGridLib.DataGrid DataGrid3 
-      Bindings        =   "MainForm.frx":3F80B
       Height          =   6015
       Left            =   5040
       TabIndex        =   3
@@ -518,55 +373,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSAdodcLib.Adodc Adodc2 
-      Height          =   375
-      Left            =   2880
-      Top             =   8280
-      Visible         =   0   'False
-      Width           =   1215
-      _ExtentX        =   2143
-      _ExtentY        =   661
-      ConnectMode     =   0
-      CursorLocation  =   3
-      IsolationLevel  =   -1
-      ConnectionTimeout=   15
-      CommandTimeout  =   30
-      CursorType      =   3
-      LockType        =   3
-      CommandType     =   8
-      CursorOptions   =   0
-      CacheSize       =   50
-      MaxRecords      =   0
-      BOFAction       =   0
-      EOFAction       =   0
-      ConnectStringType=   3
-      Appearance      =   1
-      BackColor       =   -2147483643
-      ForeColor       =   -2147483640
-      Orientation     =   0
-      Enabled         =   -1
-      Connect         =   "DSN=STI"
-      OLEDBString     =   ""
-      OLEDBFile       =   ""
-      DataSourceName  =   "STI"
-      OtherAttributes =   ""
-      UserName        =   "root"
-      Password        =   "amirah@1"
-      RecordSource    =   "SELECT id as ID, name as 'Subject Name' FROM subjects"
-      Caption         =   "Adodc2"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Bernard MT Condensed"
-         Size            =   18
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      _Version        =   393216
-   End
    Begin MSDataGridLib.DataGrid DataGrid2 
-      Bindings        =   "MainForm.frx":3F820
       Height          =   6015
       Left            =   5040
       TabIndex        =   2
@@ -633,55 +440,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSAdodcLib.Adodc Adodc1 
-      Height          =   330
-      Left            =   2760
-      Top             =   7920
-      Visible         =   0   'False
-      Width           =   1200
-      _ExtentX        =   2117
-      _ExtentY        =   582
-      ConnectMode     =   0
-      CursorLocation  =   3
-      IsolationLevel  =   -1
-      ConnectionTimeout=   15
-      CommandTimeout  =   30
-      CursorType      =   3
-      LockType        =   3
-      CommandType     =   1
-      CursorOptions   =   0
-      CacheSize       =   50
-      MaxRecords      =   0
-      BOFAction       =   0
-      EOFAction       =   0
-      ConnectStringType=   3
-      Appearance      =   1
-      BackColor       =   -2147483643
-      ForeColor       =   -2147483640
-      Orientation     =   0
-      Enabled         =   -1
-      Connect         =   "DSN=STI"
-      OLEDBString     =   ""
-      OLEDBFile       =   ""
-      DataSourceName  =   "STI"
-      OtherAttributes =   ""
-      UserName        =   "root"
-      Password        =   "amirah@1"
-      RecordSource    =   "SELECT id as ID, name as 'Subject Name' FROM rooms"
-      Caption         =   "Adodc1"
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Bernard MT Condensed"
-         Size            =   18
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      _Version        =   393216
-   End
    Begin MSDataGridLib.DataGrid DataGrid1 
-      Bindings        =   "MainForm.frx":3F835
       Height          =   6015
       Left            =   5040
       TabIndex        =   0
@@ -761,19 +520,19 @@ Begin VB.Form MainForm
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
          NumListImages   =   4
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":3F84A
+            Picture         =   "MainForm.frx":3F5FC
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":40D7C
+            Picture         =   "MainForm.frx":40B2E
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":422AE
+            Picture         =   "MainForm.frx":42060
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":43994
+            Picture         =   "MainForm.frx":43746
             Key             =   ""
          EndProperty
       EndProperty
@@ -822,70 +581,70 @@ Begin VB.Form MainForm
    Begin VB.Image Image13 
       Height          =   825
       Left            =   240
-      Picture         =   "MainForm.frx":4507A
+      Picture         =   "MainForm.frx":44E2C
       Top             =   9360
       Width           =   2190
    End
    Begin VB.Image Image12 
       Height          =   1245
       Left            =   0
-      Picture         =   "MainForm.frx":4689E
+      Picture         =   "MainForm.frx":46650
       Top             =   7080
       Width           =   4455
    End
    Begin VB.Image Image11 
       Height          =   735
       Left            =   15960
-      Picture         =   "MainForm.frx":49F55
+      Picture         =   "MainForm.frx":49D07
       Top             =   1920
       Width           =   765
    End
    Begin VB.Image Image10 
       Height          =   735
       Left            =   11280
-      Picture         =   "MainForm.frx":4A744
+      Picture         =   "MainForm.frx":4A4F6
       Top             =   1920
       Width           =   4635
    End
    Begin VB.Image Image9 
       Height          =   735
       Left            =   10080
-      Picture         =   "MainForm.frx":4AABC
+      Picture         =   "MainForm.frx":4A86E
       Top             =   1905
       Width           =   615
    End
    Begin VB.Image Image8 
       Height          =   735
       Left            =   9360
-      Picture         =   "MainForm.frx":4B18C
+      Picture         =   "MainForm.frx":4AF3E
       Top             =   1900
       Width           =   600
    End
    Begin VB.Image Image7 
       Height          =   690
       Left            =   8640
-      Picture         =   "MainForm.frx":4B8F8
+      Picture         =   "MainForm.frx":4B6AA
       Top             =   1920
       Width           =   630
    End
    Begin VB.Image Image6 
       Height          =   1305
       Left            =   0
-      Picture         =   "MainForm.frx":4BFAC
+      Picture         =   "MainForm.frx":4BD5E
       Top             =   6120
       Width           =   4485
    End
    Begin VB.Image Image5 
       Height          =   1050
       Left            =   0
-      Picture         =   "MainForm.frx":4F848
+      Picture         =   "MainForm.frx":4F5FA
       Top             =   5160
       Width           =   4485
    End
    Begin VB.Image Image4 
       Height          =   990
       Left            =   0
-      Picture         =   "MainForm.frx":52B02
+      Picture         =   "MainForm.frx":528B4
       Top             =   4200
       Width           =   4485
    End
@@ -902,91 +661,91 @@ Begin VB.Form MainForm
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
          NumListImages   =   22
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":559EF
+            Picture         =   "MainForm.frx":557A1
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":5ADF1
+            Picture         =   "MainForm.frx":5ABA3
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":601F3
+            Picture         =   "MainForm.frx":5FFA5
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":655F5
+            Picture         =   "MainForm.frx":653A7
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":6A9F7
+            Picture         =   "MainForm.frx":6A7A9
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":6FBA1
+            Picture         =   "MainForm.frx":6F953
             Key             =   ""
          EndProperty
          BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":74D4B
+            Picture         =   "MainForm.frx":74AFD
             Key             =   ""
          EndProperty
          BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":7A3A5
+            Picture         =   "MainForm.frx":7A157
             Key             =   ""
          EndProperty
          BeginProperty ListImage9 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":7F9FF
+            Picture         =   "MainForm.frx":7F7B1
             Key             =   ""
          EndProperty
          BeginProperty ListImage10 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":86445
+            Picture         =   "MainForm.frx":861F7
             Key             =   ""
          EndProperty
          BeginProperty ListImage11 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":8CE8B
+            Picture         =   "MainForm.frx":8CC3D
             Key             =   ""
          EndProperty
          BeginProperty ListImage12 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":93421
+            Picture         =   "MainForm.frx":931D3
             Key             =   ""
          EndProperty
          BeginProperty ListImage13 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":999B7
+            Picture         =   "MainForm.frx":99769
             Key             =   ""
          EndProperty
          BeginProperty ListImage14 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9BDD5
+            Picture         =   "MainForm.frx":9BB87
             Key             =   ""
          EndProperty
          BeginProperty ListImage15 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9E1F3
+            Picture         =   "MainForm.frx":9DFA5
             Key             =   ""
          EndProperty
          BeginProperty ListImage16 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9EE2D
+            Picture         =   "MainForm.frx":9EBDF
             Key             =   ""
          EndProperty
          BeginProperty ListImage17 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9FA67
+            Picture         =   "MainForm.frx":9F819
             Key             =   ""
          EndProperty
          BeginProperty ListImage18 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A0661
+            Picture         =   "MainForm.frx":A0413
             Key             =   ""
          EndProperty
          BeginProperty ListImage19 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A125B
+            Picture         =   "MainForm.frx":A100D
             Key             =   ""
          EndProperty
          BeginProperty ListImage20 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A1F19
+            Picture         =   "MainForm.frx":A1CCB
             Key             =   ""
          EndProperty
          BeginProperty ListImage21 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A2BD7
+            Picture         =   "MainForm.frx":A2989
             Key             =   ""
          EndProperty
          BeginProperty ListImage22 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A3A1D
+            Picture         =   "MainForm.frx":A37CF
             Key             =   ""
          EndProperty
       EndProperty
@@ -994,14 +753,14 @@ Begin VB.Form MainForm
    Begin VB.Image Image3 
       Height          =   1020
       Left            =   0
-      Picture         =   "MainForm.frx":A4863
+      Picture         =   "MainForm.frx":A4615
       Top             =   3240
       Width           =   4485
    End
    Begin VB.Image Image2 
       Height          =   1020
       Left            =   0
-      Picture         =   "MainForm.frx":A7633
+      Picture         =   "MainForm.frx":A73E5
       Top             =   2280
       Width           =   4485
    End
@@ -1045,6 +804,9 @@ Private Function deployTables()
     Dim conn As New ADODB.Connection
     conn = db
 End Function
+
+Private Sub Adodc2_WillMove(ByVal adReason As ADODB.EventReasonEnum, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)
+End Sub
 
 Private Sub Form_Load()
     msgFadeout
