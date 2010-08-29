@@ -6,15 +6,14 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "ModelRoom"
+Attribute VB_Name = "ModelSectionUser"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
-Private m_id As Integer
-Private m_name As String
+Private m_id, m_section_id, m_user_id As Integer
 
 Public Property Let Id(value As Integer)
     m_id = value
@@ -24,12 +23,20 @@ Public Property Get Id() As Integer
     Id = m_id
 End Property
 
-Public Property Let Name(value As String)
-    m_name = value
+Public Property Let SectionId(value As Integer)
+    m_section_id = value
 End Property
 
-Public Property Get Name() As String
-    Name = m_name
+Public Property Get SectionId() As Integer
+    SectionId = m_section_id
+End Property
+
+Public Property Let UserId(value As Integer)
+    m_user_id = value
+End Property
+
+Public Property Get UserId() As Integer
+    UserId = m_user_id
 End Property
 
 Public Sub Delete()
@@ -38,7 +45,7 @@ Public Sub Delete()
         
         where = "WHERE id = " & Id
         
-        Call DeleteFromTable("rooms", where)
+        Call DeleteFromTable("section_users", where)
     Exit Sub
 ErrHandler:
     MsgBox Err.Description, vbExclamation
@@ -53,10 +60,11 @@ Public Sub Load(v_id As Integer)
     On Error GoTo ErrHandler
         conn.Open
 
-        row.Open "SELECT * FROM rooms WHERE id = " & v_id, conn
+        row.Open "SELECT * FROM section_users WHERE id = " & v_id, conn
                 
         Id = row(0).value
-        Name = row(1).value
+        SectionId = row(1).value
+        UserId = row(2).value
         
         row.Close
         conn.Close
@@ -68,13 +76,16 @@ End Sub
 
 Public Sub Upsert()
     On Error GoTo ErrHandler
-        Dim fields(0) As String
-        Dim data(0) As Variant
+        Dim fields(1) As String
+        Dim data(1) As Variant
         
-        fields(0) = "name"
-        data(0) = Name
+        fields(0) = "section_id"
+        fields(1) = "user_id"
         
-        Call UpsertTable("rooms", data, fields, Id)
+        data(0) = SectionId
+        data(1) = UserId
+        
+        Call UpsertTable("section_users", data, fields, Id)
     Exit Sub
 ErrHandler:
     MsgBox Err.Description, vbExclamation
@@ -89,11 +100,16 @@ Public Function GetAll() As ADODB.Recordset
     On Error GoTo ErrHandler
         conn.Open
         
-        rs.Open "SELECT id as room_id, name as room_name FROM rooms", conn
+        rs.Open "SELECT " _
+                & "id as section_user_id, " _
+                & "section_id, " _
+                & "user_id " _
+            & "FROM section_users", conn
         
         Set GetAll = rs
     Exit Function
 ErrHandler:
     MsgBox Err.Description, vbExclamation
 End Function
+
 

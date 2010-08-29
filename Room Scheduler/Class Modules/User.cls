@@ -58,102 +58,85 @@ Public Property Let UserType(value As String)
 End Property
 
 Public Sub Load(v_id As Integer)
-    Dim rs As New ADODB.Recordset
-    Dim field As ADODB.field
+    Dim row As New ADODB.Recordset
     Dim conn As New ADODB.Connection
-    
+
     conn = db
-    
+
     On Error GoTo ErrHandler
         conn.Open
-        rs.Open "SELECT * FROM users WHERE id = " & v_id, conn
-    
-        Id = rs(0).value
-        LastName = rs(1).value
-        FirstName = rs(2).value
-        MiddleName = rs(3).value
-        UserType = rs(4).value
-    
-        rs.Close
+
+        row.Open "SELECT * FROM users WHERE id = " & v_id, conn
+                
+        Id = row(0).value
+        LastName = row(1).value
+        FirstName = row(2).value
+        MiddleName = row(3).value
+        UserType = row(4).value
+        
+        row.Close
         conn.Close
     Exit Sub
     
 ErrHandler:
-    'error message here!
+    MsgBox Err.Description, vbExclamation
 End Sub
 
 Public Sub Upsert()
-    Dim conn As New ADODB.Connection
-    conn = db
-    
     On Error GoTo ErrHandler
-        conn.Open
-        
         Dim fields(3) As String
         Dim data(3) As Variant
-
-        If Id = 0 Then
-            'insert
-            fields(0) = "last_name"
-            fields(1) = "first_name"
-            fields(2) = "middle_name"
-            fields(3) = "type"
-            
-            data(0) = LastName
-            data(1) = FirstName
-            data(2) = MiddleName
-            data(3) = UserType
-            
-            conn.Execute insertSql("users", data, fields)
-        Else
-            'update
-            Dim where As String
-            
-            If LastName <> "" Then
-                fields(0) = "last_name"
-                data(0) = LastName
-            End If
-            
-            If FirstName <> "" Then
-                fields(1) = "first_name"
-                data(1) = FirstName
-            End If
-            
-            If MiddleName <> "" Then
-                fields(2) = "middle_name"
-                data(2) = MiddleName
-            End If
-            
-            If UserType <> "" Then
-                fields(3) = "type"
-                data(3) = UserType
-            End If
-
-            where = "WHERE id = " & Id
-
-            conn.Execute updateSql("users", data, fields, where)
-        End If
         
-        conn.Close
+        fields(0) = "last_name"
+        fields(1) = "first_name"
+        fields(2) = "middle_name"
+        fields(3) = "type"
+            
+        data(0) = LastName
+        data(1) = FirstName
+        data(2) = MiddleName
+        data(3) = UserType
+        
+        Call UpsertTable("users", data, fields, Id)
     Exit Sub
 ErrHandler:
-    'error message here!
+    MsgBox Err.Description, vbExclamation
 End Sub
 
 Public Sub Delete()
-    Dim conn As New ADODB.Connection
-    conn = db
-    
     On Error GoTo ErrHandler
-        conn.Open
-       
         Dim where As String
         
         where = "WHERE id = " & Id
         
-        conn.Execute deleteSql("users", where)
-        conn.Close
+        Call DeleteFromTable("users", where)
     Exit Sub
 ErrHandler:
-    'error message here
+    MsgBox Err.Description, vbExclamation
 End Sub
+
+Public Function GetAll() As ADODB.Recordset
+    Dim rs As New ADODB.Recordset
+    Dim conn As New ADODB.Connection
+    
+    conn = db
+    
+    On Error GoTo ErrHandler
+        conn.Open
+        
+        rs.Open "SELECT " _
+                & "id as user_id, " _
+                & "last_name, " _
+                & "first_name, " _
+                & "middle_name, " _
+                & "type as user_type " _
+            & "FROM users", conn
+        
+        Set GetAll = rs
+    Exit Function
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+End Function
+
+
+
