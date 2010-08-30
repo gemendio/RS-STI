@@ -83,13 +83,18 @@ End Sub
 Public Function GetAll() As ADODB.Recordset
     Dim rs As New ADODB.Recordset
     Dim conn As New ADODB.Connection
-    
+    Dim sqlScript As String
     conn = db
     
     On Error GoTo ErrHandler
         conn.Open
+            
+        rs.CursorLocation = adUseClient
         
-        rs.Open "SELECT id as section_id, name as section_name FROM sections", conn
+        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name', CONCAT(usr. last_name , ', ' , usr.first_name) as User "
+        sqlScript = sqlScript + "FROM sections sec JOIN users usr ON sec.user_id=usr.id"
+        
+        rs.Open sqlScript, conn, adOpenStatic, adLockOptimistic
         
         Set GetAll = rs
     Exit Function
@@ -97,5 +102,26 @@ ErrHandler:
     MsgBox Err.Description, vbExclamation
 End Function
 
-
-
+Public Function search(strSeek As String)
+    Dim rs As New ADODB.Recordset
+    Dim conn As New ADODB.Connection
+    Dim sqlScript As String
+        
+    conn = db
+    
+    On Error GoTo ErrHandler
+        conn.Open
+        
+        rs.CursorLocation = adUseClient
+        
+        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name', CONCAT(usr.last_name , ', ' , usr.first_name) "
+        sqlScript = sqlScript + " as User FROM sections sec JOIN users usr ON sec.user_id=usr.id WHERE CONCAT(sec.name, usr.last_name, usr.first_name) LIKE '%" + strSeek + "%'"
+        
+        rs.Open sqlScript, conn
+        
+        Set search = rs
+    Exit Function
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+    
+End Function

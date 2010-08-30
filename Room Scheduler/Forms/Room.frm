@@ -75,21 +75,21 @@ Dim state As String
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Room"
-    Room.Caption = state + " Room"
+    room.Caption = state + " Room"
 End Sub
 
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
 
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
 
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
 Private Sub Image2_Click()
@@ -104,6 +104,3 @@ Private Sub Image1_Click()
     Unload Me
 End Sub
 
-Private Sub room_name_Change()
-
-End Sub

@@ -143,21 +143,22 @@ End Sub
 Public Function GetAll() As ADODB.Recordset
     Dim rs As New ADODB.Recordset
     Dim conn As New ADODB.Connection
+    Dim sqlScript As String
     
     conn = db
     
     On Error GoTo ErrHandler
         conn.Open
         
-        rs.Open "SELECT " _
-                & "id as user_id, " _
-                & "day, " _
-                & "start_time, " _
-                & "end_time, " _
-                & "room_id, " _
-                & "subject_id, " _
-                & "section_id " _
-            & "FROM schedules", conn
+        rs.CursorLocation = adUseClient
+        
+        sqlScript = "SELECT scd.id as ID, scd.day as Day,scd.start_time as 'Start Time',scd.end_time as 'End Time', "
+        sqlScript = sqlScript + "r.name as Room,sbj.name as Subject,sec.name as Section "
+        sqlScript = sqlScript + "FROM schedules scd JOIN rooms r ON r.id=scd.room_id "
+        sqlScript = sqlScript + "JOIN sections sec ON sec.id=scd.section_id "
+        sqlScript = sqlScript + "JOIN subjects sbj ON sbj.id=scd.subject_id "
+        
+        rs.Open sqlScript, conn
         
         Set GetAll = rs
     Exit Function
@@ -165,4 +166,32 @@ ErrHandler:
     MsgBox Err.Description, vbExclamation
 End Function
 
-
+Public Function search(strSeek As String)
+    Dim rs As New ADODB.Recordset
+    Dim conn As New ADODB.Connection
+    Dim sqlScript As String
+    
+    conn = db
+    
+    On Error GoTo ErrHandler
+        conn.Open
+        
+        rs.CursorLocation = adUseClient
+        rs.CursorLocation = adUseClient
+        
+        sqlScript = "SELECT scd.id as ID, scd.day as Day,scd.start_time as 'Start Time',scd.end_time as 'End Time', "
+        sqlScript = sqlScript + "r.name as Room,sbj.name as Subject,sec.name as Section "
+        sqlScript = sqlScript + "FROM schedules scd JOIN rooms r ON r.id=scd.room_id "
+        sqlScript = sqlScript + "JOIN sections sec ON sec.id=scd.section_id "
+        sqlScript = sqlScript + "JOIN subjects sbj ON sbj.id=scd.subject_id "
+        sqlScript = sqlScript + "WHERE CONCAT(scd.day,r.name,sbj.name,sec.name) "
+        sqlScript = sqlScript + "LIKE '%" + strSeek + "%' OR CONCAT(scd.start_time,scd.end_time) LIKE '%" + strSeek + "%'"
+        
+        rs.Open sqlScript, conn
+        
+        Set search = rs
+    Exit Function
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+    
+End Function

@@ -88,8 +88,9 @@ Public Function GetAll() As ADODB.Recordset
     
     On Error GoTo ErrHandler
         conn.Open
-        
-        rs.Open "SELECT id as subject_id, name as subject_name FROM subjects", conn
+                
+        rs.CursorLocation = adUseClient
+        rs.Open "SELECT id as ID, name as 'Subject Name' FROM subjects", conn, adOpenStatic, adLockOptimistic
         
         Set GetAll = rs
     Exit Function
@@ -97,5 +98,22 @@ ErrHandler:
     MsgBox Err.Description, vbExclamation
 End Function
 
-
+Public Function search(strSeek As String)
+    Dim rs As New ADODB.Recordset
+    Dim conn As New ADODB.Connection
+    
+    conn = db
+    
+    On Error GoTo ErrHandler
+        conn.Open
+        
+        rs.CursorLocation = adUseClient
+        rs.Open "SELECT id as ID, name as 'Subject Name' FROM subjects WHERE name LIKE '%" + strSeek + "%'", conn
+        
+        Set search = rs
+    Exit Function
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+    
+End Function
 

@@ -24,6 +24,24 @@ Begin VB.Form MainForm
    ScaleWidth      =   17310
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Begin VB.TextBox searchStr 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   420
+      Left            =   11400
+      TabIndex        =   7
+      Top             =   2040
+      Width           =   4335
+   End
    Begin VB.Timer Timer1 
       Left            =   2400
       Top             =   1560
@@ -39,352 +57,6 @@ Begin VB.Form MainForm
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
-      FormatLocked    =   -1  'True
-      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ColumnCount     =   7
-      BeginProperty Column00 
-         DataField       =   "ID"
-         Caption         =   "ID"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column01 
-         DataField       =   "Day"
-         Caption         =   "Day"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column02 
-         DataField       =   "Start Time"
-         Caption         =   "Start Time"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column03 
-         DataField       =   "End Time"
-         Caption         =   "End Time"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column04 
-         DataField       =   "Room"
-         Caption         =   "Room"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column05 
-         DataField       =   "Subject"
-         Caption         =   "Subject"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column06 
-         DataField       =   "Section"
-         Caption         =   "Section"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      SplitCount      =   1
-      BeginProperty Split0 
-         BeginProperty Column00 
-            ColumnWidth     =   915.024
-         EndProperty
-         BeginProperty Column01 
-            ColumnWidth     =   1065.26
-         EndProperty
-         BeginProperty Column02 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column03 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column04 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column05 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column06 
-            ColumnWidth     =   1739.906
-         EndProperty
-      EndProperty
-   End
-   Begin MSDataGridLib.DataGrid DataGrid4 
-      Height          =   6015
-      Left            =   5040
-      TabIndex        =   4
-      Top             =   2880
-      Width           =   11535
-      _ExtentX        =   20346
-      _ExtentY        =   10610
-      _Version        =   393216
-      HeadLines       =   1
-      RowHeight       =   15
-      FormatLocked    =   -1  'True
-      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ColumnCount     =   3
-      BeginProperty Column00 
-         DataField       =   "ID"
-         Caption         =   "ID"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column01 
-         DataField       =   "Section Name"
-         Caption         =   "Section Name"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column02 
-         DataField       =   "User"
-         Caption         =   "User"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      SplitCount      =   1
-      BeginProperty Split0 
-         BeginProperty Column00 
-            ColumnWidth     =   915.024
-         EndProperty
-         BeginProperty Column01 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column02 
-            ColumnWidth     =   1739.906
-         EndProperty
-      EndProperty
-   End
-   Begin MSDataGridLib.DataGrid DataGrid3 
-      Height          =   6015
-      Left            =   5040
-      TabIndex        =   3
-      Top             =   2880
-      Width           =   11535
-      _ExtentX        =   20346
-      _ExtentY        =   10610
-      _Version        =   393216
-      HeadLines       =   1
-      RowHeight       =   15
-      FormatLocked    =   -1  'True
-      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ColumnCount     =   5
-      BeginProperty Column00 
-         DataField       =   "ID"
-         Caption         =   "ID"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column01 
-         DataField       =   "Last Name"
-         Caption         =   "Last Name"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column02 
-         DataField       =   "First Name"
-         Caption         =   "First Name"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column03 
-         DataField       =   "Middle Name"
-         Caption         =   "Middle Name"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      BeginProperty Column04 
-         DataField       =   "Type"
-         Caption         =   "Type"
-         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
-            Type            =   0
-            Format          =   ""
-            HaveTrueFalseNull=   0
-            FirstDayOfWeek  =   0
-            FirstWeekOfYear =   0
-            LCID            =   1033
-            SubFormatType   =   0
-         EndProperty
-      EndProperty
-      SplitCount      =   1
-      BeginProperty Split0 
-         BeginProperty Column00 
-            ColumnWidth     =   915.024
-         EndProperty
-         BeginProperty Column01 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column02 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column03 
-            ColumnWidth     =   1739.906
-         EndProperty
-         BeginProperty Column04 
-            ColumnWidth     =   1140.095
-         EndProperty
-      EndProperty
-   End
-   Begin MSDataGridLib.DataGrid DataGrid2 
-      Height          =   6015
-      Left            =   5040
-      TabIndex        =   2
-      Top             =   2880
-      Width           =   11535
-      _ExtentX        =   20346
-      _ExtentY        =   10610
-      _Version        =   393216
-      HeadLines       =   1
-      RowHeight       =   15
-      FormatLocked    =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Microsoft Sans Serif"
          Size            =   9.75
@@ -405,8 +77,8 @@ Begin VB.Form MainForm
       EndProperty
       ColumnCount     =   2
       BeginProperty Column00 
-         DataField       =   "ID"
-         Caption         =   "ID"
+         DataField       =   ""
+         Caption         =   ""
          BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
             Type            =   0
             Format          =   ""
@@ -418,8 +90,8 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
       BeginProperty Column01 
-         DataField       =   "Subject Name"
-         Caption         =   "Subject Name"
+         DataField       =   ""
+         Caption         =   ""
          BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
             Type            =   0
             Format          =   ""
@@ -433,10 +105,200 @@ Begin VB.Form MainForm
       SplitCount      =   1
       BeginProperty Split0 
          BeginProperty Column00 
-            ColumnWidth     =   915.024
          EndProperty
          BeginProperty Column01 
-            ColumnWidth     =   1739.906
+         EndProperty
+      EndProperty
+   End
+   Begin MSDataGridLib.DataGrid DataGrid4 
+      Height          =   6015
+      Left            =   5040
+      TabIndex        =   4
+      Top             =   2880
+      Width           =   11535
+      _ExtentX        =   20346
+      _ExtentY        =   10610
+      _Version        =   393216
+      HeadLines       =   1
+      RowHeight       =   15
+      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ColumnCount     =   2
+      BeginProperty Column00 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1033
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      BeginProperty Column01 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1033
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      SplitCount      =   1
+      BeginProperty Split0 
+         BeginProperty Column00 
+         EndProperty
+         BeginProperty Column01 
+         EndProperty
+      EndProperty
+   End
+   Begin MSDataGridLib.DataGrid DataGrid3 
+      Height          =   6015
+      Left            =   5040
+      TabIndex        =   3
+      Top             =   2880
+      Width           =   11535
+      _ExtentX        =   20346
+      _ExtentY        =   10610
+      _Version        =   393216
+      HeadLines       =   1
+      RowHeight       =   15
+      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ColumnCount     =   2
+      BeginProperty Column00 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1033
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      BeginProperty Column01 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1033
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      SplitCount      =   1
+      BeginProperty Split0 
+         BeginProperty Column00 
+         EndProperty
+         BeginProperty Column01 
+         EndProperty
+      EndProperty
+   End
+   Begin MSDataGridLib.DataGrid DataGrid2 
+      Height          =   6015
+      Left            =   5040
+      TabIndex        =   2
+      Top             =   2880
+      Width           =   11535
+      _ExtentX        =   20346
+      _ExtentY        =   10610
+      _Version        =   393216
+      HeadLines       =   1
+      RowHeight       =   15
+      BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ColumnCount     =   2
+      BeginProperty Column00 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1033
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      BeginProperty Column01 
+         DataField       =   ""
+         Caption         =   ""
+         BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
+            Type            =   0
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1033
+            SubFormatType   =   0
+         EndProperty
+      EndProperty
+      SplitCount      =   1
+      BeginProperty Split0 
+         BeginProperty Column00 
+         EndProperty
+         BeginProperty Column01 
          EndProperty
       EndProperty
    End
@@ -449,9 +311,9 @@ Begin VB.Form MainForm
       _ExtentX        =   20346
       _ExtentY        =   10610
       _Version        =   393216
+      AllowUpdate     =   0   'False
       HeadLines       =   1
       RowHeight       =   15
-      FormatLocked    =   -1  'True
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Microsoft Sans Serif"
          Size            =   9.75
@@ -472,8 +334,8 @@ Begin VB.Form MainForm
       EndProperty
       ColumnCount     =   2
       BeginProperty Column00 
-         DataField       =   "ID"
-         Caption         =   "ID"
+         DataField       =   ""
+         Caption         =   ""
          BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
             Type            =   0
             Format          =   ""
@@ -485,8 +347,8 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
       BeginProperty Column01 
-         DataField       =   "Subject Name"
-         Caption         =   "Subject Name"
+         DataField       =   ""
+         Caption         =   ""
          BeginProperty DataFormat {6D835690-900B-11D0-9484-00A0C91110ED} 
             Type            =   0
             Format          =   ""
@@ -500,10 +362,8 @@ Begin VB.Form MainForm
       SplitCount      =   1
       BeginProperty Split0 
          BeginProperty Column00 
-            ColumnWidth     =   915.024
          EndProperty
          BeginProperty Column01 
-            ColumnWidth     =   1739.906
          EndProperty
       EndProperty
    End
@@ -777,7 +637,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
 Private Function msgFadeout()
     Timer1.Interval = 5000
     Timer1.Enabled = True
@@ -797,25 +656,52 @@ Private Function buttonsOut()
     Set Image13.Picture = ImageList1.ListImages(13).Picture
 End Function
 
-Private Function deployTables()
-    Adodc1.ConnectionString = db
-    'Adodc1.RecordSource = "SELECT id as ID, name as 'Subject Name' FROM rooms"
-    Dim rs As New ADODB.Recordset
-    Dim conn As New ADODB.Connection
-    conn = db
-End Function
+Private Function deployTable()
+    Dim currenTab As String
 
-Private Sub Adodc2_WillMove(ByVal adReason As ADODB.EventReasonEnum, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)
-End Sub
+    currentTab = Label1.Caption
+    
+    Select Case currentTab
+            Case "Rooms":
+                            Dim room As New ModelRoom
+                            Set DataGrid1.DataSource = room.GetAll
+            Case "Subjects":
+                            Dim subject As New ModelSubject
+                            Set DataGrid2.DataSource = subject.GetAll
+
+            Case "Sections":
+                            Dim section As New ModelSection
+                            Set DataGrid4.DataSource = section.GetAll
+
+            Case "Users":
+                            Dim user As New ModelUser
+                            Set DataGrid3.DataSource = user.GetAll
+
+            Case "Schedules":
+                            Dim schedule As New ModelSchedule
+                            Set DataGrid5.DataSource = schedule.GetAll
+            
+            Case Else: Label2.Caption = ""
+        End Select
+    'DataGrid1
+End Function
 
 Private Sub Form_Load()
     msgFadeout
+    deployTable
 End Sub
-
-
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
 End Sub
+
+Private Sub Image11_Click()
+    goSearch
+End Sub
+Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+    buttonsOut
+    Set Image11.Picture = ImageList1.ListImages(22).Picture
+End Sub
+
 Private Sub Image12_Click()
     Label1.Caption = "Reports"
     
@@ -846,10 +732,13 @@ Private Sub Image2_Click()
     DataGrid3.Visible = False
     DataGrid4.Visible = False
     DataGrid5.Visible = False
+    deployTable
+    'Adodc1.RecordSource = "SELECT id as ID, name as 'Room Name' FROM rooms"
+   ' Adodc1.Refresh
 
 End Sub
 
-Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image2.Picture = ImageList1.ListImages(2).Picture
 End Sub
@@ -864,9 +753,10 @@ Private Sub Image3_Click()
     DataGrid4.Visible = False
     DataGrid5.Visible = False
 
+    deployTable
 End Sub
 
-Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image3.Picture = ImageList1.ListImages(4).Picture
 End Sub
@@ -881,14 +771,16 @@ Private Sub Image4_Click()
     DataGrid4.Visible = False
     DataGrid5.Visible = False
 
+    deployTable
 End Sub
 
-Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image4.Picture = ImageList1.ListImages(6).Picture
 End Sub
 
 Private Sub Image5_Click()
+    Dim sqlScript As String
     Label1.Caption = "Sections"
     
     DataGrid4.Visible = True
@@ -897,14 +789,17 @@ Private Sub Image5_Click()
     DataGrid3.Visible = False
     DataGrid1.Visible = False
     DataGrid5.Visible = False
+    
+    deployTable
 End Sub
 
-Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image5.Picture = ImageList1.ListImages(8).Picture
 End Sub
 
 Private Sub Image6_Click()
+    Dim sqlScript As String
     Label1.Caption = "Schedules"
     
     DataGrid5.Visible = True
@@ -914,25 +809,35 @@ Private Sub Image6_Click()
     DataGrid4.Visible = False
     DataGrid1.Visible = False
     
+    sqlScript = "SELECT scd.id as ID, scd.day as Day,scd.start_time as 'Start Time',scd.end_time as 'End Time', "
+    sqlScript = sqlScript + "r.name as Room,sbj.name as Subject,sec.name as Section "
+    sqlScript = sqlScript + "FROM schedules scd JOIN rooms r ON r.id=scd.room_id "
+    sqlScript = sqlScript + "JOIN sections sec ON sec.id=scd.section_id "
+    sqlScript = sqlScript + "JOIN subjects sbj ON sbj.id=scd.subject_id "
+    
+    deployTable
 End Sub
 
-Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image6.Picture = ImageList1.ListImages(10).Picture
 End Sub
 
-Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image12.Picture = ImageList1.ListImages(12).Picture
 End Sub
-Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image13.Picture = ImageList1.ListImages(14).Picture
 End Sub
 
+Private Sub Image7_Click()
+    goAdd
+End Sub
 
-Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    buttonsOut
+Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+     buttonsOut
     Set Image7.Picture = ImageList1.ListImages(16).Picture
 End Sub
 
@@ -940,7 +845,7 @@ Private Sub Image8_Click()
     goEdit
 End Sub
 
-Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image8.Picture = ImageList1.ListImages(18).Picture
 End Sub
@@ -949,17 +854,17 @@ Private Sub Image9_Click()
     goDel
 End Sub
 
-Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image9.Picture = ImageList1.ListImages(20).Picture
 End Sub
-Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    buttonsOut
-    Set Image11.Picture = ImageList1.ListImages(22).Picture
+
+Private Sub SearchStr_Change()
+    goSearch
 End Sub
 
-Private Sub Image7_Click()
-    goAdd
+Private Sub SearchStr_KeyPress(KeyAscii As Integer)
+     If KeyAscii = 13 Then KeyAscii = 0: goSearch
 End Sub
 
 Private Sub Timer1_Timer()
@@ -1086,26 +991,65 @@ ErrFound:
 Resume
 
 End Function
+Private Function goSearch()
+    Dim currentTab As String
+    Dim strSeek As String
+    Dim sqlScript As String
+
+    strSeek = searchStr.Text
+    currentTab = Label1.Caption
+        
+        Select Case currentTab
+            Case "Rooms":
+                         Dim room As New ModelRoom
+                         Set DataGrid1.DataSource = room.search(strSeek)
+                         DataGrid1.Refresh
+            Case "Sections":
+                         Dim section As New ModelSection
+                         Set DataGrid4.DataSource = section.search(strSeek)
+                         DataGrid4.Refresh
+            Case "Subjects":
+                         Dim subject As New ModelSubject
+                         Set DataGrid2.DataSource = subject.search(strSeek)
+                         DataGrid2.Refresh
+                         
+            Case "Users":
+                         Dim user As New ModelUser
+                         Set DataGrid3.DataSource = user.search(strSeek)
+                         DataGrid3.Refresh
+                         
+            Case "Schedules":
+                         Dim schedule As New ModelSchedule
+                         Set DataGrid5.DataSource = schedule.search(strSeek)
+                         DataGrid5.Refresh
+
+            Case Else: Label2.Caption = ""
+        End Select
+
+End Function
+
 Private Function LoadRoom(args As String)
-    Load Room
-    Room.Show vbModal
+    Load room
+    room.Show vbModal
 End Function
 Private Function LoadUser(args As String)
-    Load User
-    User.Show vbModal
+    Load user
+    user.Show vbModal
 End Function
 Private Function LoadSubject(args As String)
-    Load Subject
-    Subject.Show vbModal
+    Load subject
+    subject.Show vbModal
 End Function
 Private Function LoadSection(args As String)
-    Load Section
-    Section.Show vbModal
+    Load section
+    section.Show vbModal
 End Function
 Private Function LoadSchedule(args As String)
-    Load Schedule
-    Schedule.Show vbModal
+    Load schedule
+    schedule.Show vbModal
 End Function
+
+
 
 
 

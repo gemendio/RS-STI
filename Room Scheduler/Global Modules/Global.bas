@@ -5,7 +5,7 @@ Public Function db() As ADODB.Connection
                          & "SERVER=localhost;" _
                          & "DATABASE=room_scheduler;" _
                          & "UID=root;" _
-                         & "PWD=p@ssword;" _
+                         & "PWD=amirah@1;" _
                          & "OPTION=3"
     Set db = c
 End Function

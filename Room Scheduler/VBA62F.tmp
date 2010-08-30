@@ -21,9 +21,7 @@ Form=Forms\Room.frm
 Form=Forms\User.frm
 Object={8E27C92E-1264-101C-8A2F-040224009C02}#7.0#0; MSCAL.OCX
 Object={86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0; mscomct2.ocx
-Class=ModelSchedule; Class Modules\Schedule.cls
-Class=ModelSubject; Class Modules\Subject.cls
-Class=ModelSectionUser; Class Modules\SectionUser.cls
+Object={4A0AAAE5-AC85-4CCC-9A3C-6993D273FB3A}#1.0#0; VUAC.dll
 Startup="MainForm"
 HelpFile=""
 Command32=""
@@ -51,6 +49,3 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
-
-[MS Transaction Server]
-AutoRefresh=1

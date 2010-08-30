@@ -89,11 +89,31 @@ Public Function GetAll() As ADODB.Recordset
     On Error GoTo ErrHandler
         conn.Open
         
-        rs.Open "SELECT id as room_id, name as room_name FROM rooms", conn
+        rs.CursorLocation = adUseClient
+        rs.Open "SELECT id as ID, name as 'Room Name' FROM rooms", conn
         
         Set GetAll = rs
     Exit Function
 ErrHandler:
     MsgBox Err.Description, vbExclamation
+End Function
+
+Public Function search(strSeek As String)
+    Dim rs As New ADODB.Recordset
+    Dim conn As New ADODB.Connection
+    
+    conn = db
+    
+    On Error GoTo ErrHandler
+        conn.Open
+        
+        rs.CursorLocation = adUseClient
+        rs.Open "SELECT id as ID, name as 'Room Name' FROM rooms WHERE name LIKE '%" + strSeek + "%'", conn
+        
+        Set search = rs
+    Exit Function
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+    
 End Function
 
