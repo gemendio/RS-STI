@@ -11,9 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Option Explicit
-
-Private m_id, m_user_id As Integer
+Private m_id As Integer
 Private m_name As String
 
 Public Property Get Id() As Integer
@@ -22,13 +20,6 @@ End Property
 
 Public Property Let Id(value As Integer)
     m_id = value
-End Property
-Public Property Get UserId() As Integer
-    UserId = m_user_id
-End Property
-
-Public Property Let UserId(value As Integer)
-    m_userId = value
 End Property
 
 Public Property Get Name() As String
@@ -52,7 +43,6 @@ Public Sub Load(v_id As Integer)
                 
         Id = row(0).value
         Name = row(1).value
-        UserId = row(3).value
         
         row.Close
         conn.Close
@@ -68,9 +58,8 @@ Public Sub Upsert()
         Dim data(0) As Variant
 
         fields(0) = "name"
-        fields(1) = "user_id"
         data(0) = Name
-        data(1) = UserId
+        
         Call UpsertTable("sections", data, fields, Id)
     Exit Sub
 ErrHandler:
@@ -100,7 +89,7 @@ Public Function GetAll() As ADODB.Recordset
             
         rs.CursorLocation = adUseClient
         
-        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name', CONCAT(usr. last_name , ', ' , usr.first_name) as User "
+        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name' "
         sqlScript = sqlScript + "FROM sections sec JOIN users usr ON sec.user_id=usr.id"
         
         rs.Open sqlScript, conn, adOpenStatic, adLockOptimistic
@@ -123,8 +112,8 @@ Public Function search(strSeek As String)
         
         rs.CursorLocation = adUseClient
         
-        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name', CONCAT(usr.last_name , ', ' , usr.first_name) "
-        sqlScript = sqlScript + " as User FROM sections sec JOIN users usr ON sec.user_id=usr.id WHERE CONCAT(sec.name, usr.last_name, usr.first_name) LIKE '%" + strSeek + "%'"
+        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name' as User FROM sections sec JOIN users usr ON sec.user_id=usr.id "
+        sqlScript = sqlScript + "  WHERE CONCAT(sec.name, usr.last_name, usr.first_name) LIKE '%" + strSeek + "%'"
         
         rs.Open sqlScript, conn
         
@@ -134,3 +123,4 @@ ErrHandler:
     MsgBox Err.Description, vbExclamation
     
 End Function
+

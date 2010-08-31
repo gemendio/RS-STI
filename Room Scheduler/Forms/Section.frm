@@ -11,25 +11,6 @@ Begin VB.Form Section
    ScaleHeight     =   7665
    ScaleWidth      =   7050
    StartUpPosition =   2  'CenterScreen
-   Begin VB.ComboBox sec_user_name 
-      Appearance      =   0  'Flat
-      BeginProperty Font 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   360
-      ItemData        =   "Section.frx":1790C
-      Left            =   2760
-      List            =   "Section.frx":1790E
-      TabIndex        =   2
-      Top             =   2200
-      Width           =   3625
-   End
    Begin VB.TextBox section_name 
       Appearance      =   0  'Flat
       BorderStyle     =   0  'None
@@ -70,14 +51,14 @@ Begin VB.Form Section
    Begin VB.Image Image2 
       Height          =   615
       Left            =   2520
-      Picture         =   "Section.frx":17910
+      Picture         =   "Section.frx":179F2
       Top             =   6600
       Width           =   1695
    End
    Begin VB.Image Image1 
       Height          =   600
       Left            =   720
-      Picture         =   "Section.frx":18662
+      Picture         =   "Section.frx":18744
       Top             =   6600
       Width           =   1605
    End
@@ -91,36 +72,21 @@ Private state As String
 Private section_grid As DataGrid
 Private Id As Integer
 Private section As New ModelSection
-Private user As New ModelUser
+
 
 Public Function goEdit()
     section.Name = section_name.Text
-    section.UserId = sec_user_name.ListIndex
     section.Upsert
 End Function
 
 Public Function goAdd()
     Set section_grid = MainForm.section_grid
 End Function
-Private Function LoadUsers()
-    Dim rs_users As New ADODB.Recordset
-    
-    Set rs_users = user.GetAll
-    sec_user_name.Clear
-    Do While Not rs_users.EOF
-        sec_user_name.AddItem rs_users.fields("Last Name") & ", " & rs_users.fields("First Name")
-        sec_user_name.ItemData(sec_user_name.NewIndex) = rs_users.fields("ID")
-        rs_users.MoveNext
-    Loop
-End Function
-
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Section"
-    Me.Caption = state + " Schedule"
-
-    LoadUsers
+    Me.Caption = state + " Section"
     
     'goValidate
     
@@ -129,10 +95,7 @@ Private Sub Form_Load()
          
          Id = section_grid.Bookmark
          section.Load (Id)
-
          Me.section_name.Text = section.Name
-         Me.sec_user_name.ListIndex = section.UserId - 1
-
     End If
     
 End Sub

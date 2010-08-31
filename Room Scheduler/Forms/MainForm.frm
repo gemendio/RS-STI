@@ -674,8 +674,8 @@ Private Function deployTable()
                             Set section_grid.DataSource = section.GetAll
 
             Case "Users":
-                            Dim user As New ModelUser
-                            Set user_grid.DataSource = user.GetAll
+                            Dim User As New ModelUser
+                            Set user_grid.DataSource = User.GetAll
 
             Case "Schedules":
                             Dim schedule As New ModelSchedule
@@ -1012,8 +1012,8 @@ Private Function goSearch()
                          subject_grid.Refresh
                          
             Case "Users":
-                         Dim user As New ModelUser
-                         Set user_grid.DataSource = user.search(strSeek)
+                         Dim User As New ModelUser
+                         Set user_grid.DataSource = User.search(strSeek)
                          user_grid.Refresh
                          
             Case "Schedules":
@@ -1031,8 +1031,8 @@ Private Function LoadRoom(args As String)
     room.Show vbModal
 End Function
 Private Function LoadUser(args As String)
-    Load user
-    user.Show vbModal
+    Load User
+    User.Show vbModal
 End Function
 Private Function LoadSubject(args As String)
     Load subject
