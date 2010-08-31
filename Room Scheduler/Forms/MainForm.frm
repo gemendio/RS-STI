@@ -46,7 +46,7 @@ Begin VB.Form MainForm
       Left            =   2400
       Top             =   1560
    End
-   Begin MSDataGridLib.DataGrid DataGrid5 
+   Begin MSDataGridLib.DataGrid schedule_grid 
       Height          =   6015
       Left            =   5040
       TabIndex        =   5
@@ -110,7 +110,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSDataGridLib.DataGrid DataGrid4 
+   Begin MSDataGridLib.DataGrid section_grid 
       Height          =   6015
       Left            =   5040
       TabIndex        =   4
@@ -174,7 +174,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSDataGridLib.DataGrid DataGrid3 
+   Begin MSDataGridLib.DataGrid user_grid 
       Height          =   6015
       Left            =   5040
       TabIndex        =   3
@@ -238,7 +238,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSDataGridLib.DataGrid DataGrid2 
+   Begin MSDataGridLib.DataGrid subject_grid 
       Height          =   6015
       Left            =   5040
       TabIndex        =   2
@@ -302,7 +302,7 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin MSDataGridLib.DataGrid DataGrid1 
+   Begin MSDataGridLib.DataGrid room_grid 
       Height          =   6015
       Left            =   5040
       TabIndex        =   0
@@ -664,40 +664,39 @@ Private Function deployTable()
     Select Case currentTab
             Case "Rooms":
                             Dim room As New ModelRoom
-                            Set DataGrid1.DataSource = room.GetAll
+                            Set room_grid.DataSource = room.GetAll
             Case "Subjects":
                             Dim subject As New ModelSubject
-                            Set DataGrid2.DataSource = subject.GetAll
+                            Set subject_grid.DataSource = subject.GetAll
 
             Case "Sections":
                             Dim section As New ModelSection
-                            Set DataGrid4.DataSource = section.GetAll
+                            Set section_grid.DataSource = section.GetAll
 
             Case "Users":
                             Dim user As New ModelUser
-                            Set DataGrid3.DataSource = user.GetAll
+                            Set user_grid.DataSource = user.GetAll
 
             Case "Schedules":
                             Dim schedule As New ModelSchedule
-                            Set DataGrid5.DataSource = schedule.GetAll
+                            Set schedule_grid.DataSource = schedule.GetAll
             
             Case Else: Label2.Caption = ""
         End Select
-    'DataGrid1
 End Function
 
 Private Sub Form_Load()
     msgFadeout
     deployTable
 End Sub
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
 End Sub
 
 Private Sub Image11_Click()
     goSearch
 End Sub
-Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image11.Picture = ImageList1.ListImages(22).Picture
 End Sub
@@ -705,11 +704,11 @@ End Sub
 Private Sub Image12_Click()
     Label1.Caption = "Reports"
     
-    DataGrid1.Visible = False
-    DataGrid2.Visible = False
-    DataGrid3.Visible = False
-    DataGrid4.Visible = False
-    DataGrid5.Visible = False
+    room_grid.Visible = False
+    subject_grid.Visible = False
+    user_grid.Visible = False
+    section_grid.Visible = False
+    schedule_grid.Visible = False
 End Sub
 
 Private Sub Image13_Click()
@@ -726,19 +725,17 @@ End Sub
 Private Sub Image2_Click()
     Label1.Caption = "Rooms"
     
-    DataGrid1.Visible = True
+    room_grid.Visible = True
     
-    DataGrid2.Visible = False
-    DataGrid3.Visible = False
-    DataGrid4.Visible = False
-    DataGrid5.Visible = False
+    subject_grid.Visible = False
+    user_grid.Visible = False
+    section_grid.Visible = False
+    schedule_grid.Visible = False
     deployTable
-    'Adodc1.RecordSource = "SELECT id as ID, name as 'Room Name' FROM rooms"
-   ' Adodc1.Refresh
 
 End Sub
 
-Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image2.Picture = ImageList1.ListImages(2).Picture
 End Sub
@@ -746,17 +743,17 @@ End Sub
 Private Sub Image3_Click()
     Label1.Caption = "Subjects"
     
-    DataGrid2.Visible = True
+    subject_grid.Visible = True
     
-    DataGrid1.Visible = False
-    DataGrid3.Visible = False
-    DataGrid4.Visible = False
-    DataGrid5.Visible = False
+    room_grid.Visible = False
+    user_grid.Visible = False
+    section_grid.Visible = False
+    schedule_grid.Visible = False
 
     deployTable
 End Sub
 
-Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image3.Picture = ImageList1.ListImages(4).Picture
 End Sub
@@ -764,17 +761,17 @@ End Sub
 Private Sub Image4_Click()
     Label1.Caption = "Users"
     
-    DataGrid3.Visible = True
+    user_grid.Visible = True
     
-    DataGrid2.Visible = False
-    DataGrid1.Visible = False
-    DataGrid4.Visible = False
-    DataGrid5.Visible = False
+    subject_grid.Visible = False
+    room_grid.Visible = False
+    section_grid.Visible = False
+    schedule_grid.Visible = False
 
     deployTable
 End Sub
 
-Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image4.Picture = ImageList1.ListImages(6).Picture
 End Sub
@@ -783,17 +780,17 @@ Private Sub Image5_Click()
     Dim sqlScript As String
     Label1.Caption = "Sections"
     
-    DataGrid4.Visible = True
+    section_grid.Visible = True
     
-    DataGrid2.Visible = False
-    DataGrid3.Visible = False
-    DataGrid1.Visible = False
-    DataGrid5.Visible = False
+    subject_grid.Visible = False
+    user_grid.Visible = False
+    room_grid.Visible = False
+    schedule_grid.Visible = False
     
     deployTable
 End Sub
 
-Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image5.Picture = ImageList1.ListImages(8).Picture
 End Sub
@@ -802,12 +799,12 @@ Private Sub Image6_Click()
     Dim sqlScript As String
     Label1.Caption = "Schedules"
     
-    DataGrid5.Visible = True
+    schedule_grid.Visible = True
     
-    DataGrid2.Visible = False
-    DataGrid3.Visible = False
-    DataGrid4.Visible = False
-    DataGrid1.Visible = False
+    subject_grid.Visible = False
+    user_grid.Visible = False
+    section_grid.Visible = False
+    room_grid.Visible = False
     
     sqlScript = "SELECT scd.id as ID, scd.day as Day,scd.start_time as 'Start Time',scd.end_time as 'End Time', "
     sqlScript = sqlScript + "r.name as Room,sbj.name as Subject,sec.name as Section "
@@ -818,16 +815,16 @@ Private Sub Image6_Click()
     deployTable
 End Sub
 
-Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image6.Picture = ImageList1.ListImages(10).Picture
 End Sub
 
-Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image12.Picture = ImageList1.ListImages(12).Picture
 End Sub
-Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image13.Picture = ImageList1.ListImages(14).Picture
 End Sub
@@ -836,7 +833,7 @@ Private Sub Image7_Click()
     goAdd
 End Sub
 
-Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
      buttonsOut
     Set Image7.Picture = ImageList1.ListImages(16).Picture
 End Sub
@@ -845,7 +842,7 @@ Private Sub Image8_Click()
     goEdit
 End Sub
 
-Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image8.Picture = ImageList1.ListImages(18).Picture
 End Sub
@@ -854,7 +851,7 @@ Private Sub Image9_Click()
     goDel
 End Sub
 
-Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image9.Picture = ImageList1.ListImages(20).Picture
 End Sub
@@ -901,20 +898,25 @@ Private Function goEdit()
         
     Select Case currentTab
             Case "Rooms":
-                            'Set Adodc5.Recordset = Adodc1.Recordset
                             LoadRoom ("Edit")
+                            deployTable
+                            room_grid.Refresh
             Case "Subjects":
-                            'Set Adodc5.Recordset = Adodc2.Recordset
                             LoadSubject ("Edit")
+                            deployTable
+                            subject_grid.Refresh
             Case "Sections":
-                            'Set Adodc5.Recordset = Adodc3.Recordset
                             LoadSection ("Edit")
+                            deployTable
+                            section_grid.Refresh
             Case "Users":
-                            'Set Adodc5.Recordset = Adodc4.Recordset
                             LoadUser ("Edit")
+                            deployTable
+                            user_grid.Refresh
             Case "Schedules":
-                            'Set Adodc5.Recordset = Adodc6.Recordset
                             LoadSchedule ("Edit")
+                            deployTable
+                            schedule_grid.Refresh
             Case Else: Label2.Caption = ""
         End Select
 End Function
@@ -981,9 +983,6 @@ Private Function goDel()
 
 ErrFound:
 
-    'Adodc5.Recordset.Cancel
-    'Adodc5.Refresh
-
     MsgBox "Error Number : " & Err.Number & _
     "Error Description : " & _
     Err.Description, vbInformation, Err.Source
@@ -994,7 +993,6 @@ End Function
 Private Function goSearch()
     Dim currentTab As String
     Dim strSeek As String
-    Dim sqlScript As String
 
     strSeek = searchStr.Text
     currentTab = Label1.Caption
@@ -1002,26 +1000,26 @@ Private Function goSearch()
         Select Case currentTab
             Case "Rooms":
                          Dim room As New ModelRoom
-                         Set DataGrid1.DataSource = room.search(strSeek)
-                         DataGrid1.Refresh
+                         Set room_grid.DataSource = room.search(strSeek)
+                         room_grid.Refresh
             Case "Sections":
                          Dim section As New ModelSection
-                         Set DataGrid4.DataSource = section.search(strSeek)
-                         DataGrid4.Refresh
+                         Set section_grid.DataSource = section.search(strSeek)
+                         section_grid.Refresh
             Case "Subjects":
                          Dim subject As New ModelSubject
-                         Set DataGrid2.DataSource = subject.search(strSeek)
-                         DataGrid2.Refresh
+                         Set subject_grid.DataSource = subject.search(strSeek)
+                         subject_grid.Refresh
                          
             Case "Users":
                          Dim user As New ModelUser
-                         Set DataGrid3.DataSource = user.search(strSeek)
-                         DataGrid3.Refresh
+                         Set user_grid.DataSource = user.search(strSeek)
+                         user_grid.Refresh
                          
             Case "Schedules":
                          Dim schedule As New ModelSchedule
-                         Set DataGrid5.DataSource = schedule.search(strSeek)
-                         DataGrid5.Refresh
+                         Set schedule_grid.DataSource = schedule.search(strSeek)
+                         schedule_grid.Refresh
 
             Case Else: Label2.Caption = ""
         End Select

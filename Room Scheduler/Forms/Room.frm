@@ -70,26 +70,45 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim state As String
+Private state As String
+Private room_grid As DataGrid
+Private Id As Integer
+Private room As New ModelRoom
+
+Public Function goEdit()
+    room.Name = room_name.Text
+    room.Upsert
+End Function
+Public Function goAdd()
+    Set room_grid = MainForm.room_grid
+End Function
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Room"
-    room.Caption = state + " Room"
+    Me.Caption = state + " Room"
+    
+    If state = "Edit" Then
+         Set room_grid = MainForm.room_grid
+         Id = room_grid.Bookmark
+         room.Load (Id)
+         room_name.Text = room.Name
+    End If
+    
 End Sub
 
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
 
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
 
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
 Private Sub Image2_Click()
@@ -99,6 +118,12 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
+    If state = "Edit" Then
+        goEdit
+    Else
+        goAdd
+    End If
+    
     MainForm.Label2.Caption = state + "ing room was successful."
     MainForm.Label2.Visible = True
     Unload Me

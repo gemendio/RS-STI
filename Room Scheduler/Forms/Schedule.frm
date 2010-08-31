@@ -7,27 +7,11 @@ Begin VB.Form Schedule
    ClientTop       =   450
    ClientWidth     =   7035
    LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
    Picture         =   "Schedule.frx":0000
    ScaleHeight     =   7650
    ScaleWidth      =   7035
    StartUpPosition =   2  'CenterScreen
-   Begin VB.ComboBox day_sched 
-      Appearance      =   0  'Flat
-      BeginProperty Font 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   360
-      Left            =   2760
-      TabIndex        =   6
-      Top             =   1520
-      Width           =   3625
-   End
    Begin VB.ComboBox sec_sched 
       Appearance      =   0  'Flat
       BeginProperty Font 
@@ -41,7 +25,7 @@ Begin VB.Form Schedule
       EndProperty
       Height          =   360
       Left            =   2770
-      TabIndex        =   5
+      TabIndex        =   4
       Top             =   5050
       Width           =   3625
    End
@@ -58,7 +42,7 @@ Begin VB.Form Schedule
       EndProperty
       Height          =   360
       Left            =   2760
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   4350
       Width           =   3625
    End
@@ -74,41 +58,29 @@ Begin VB.Form Schedule
          Strikethrough   =   0   'False
       EndProperty
       Height          =   360
+      ItemData        =   "Schedule.frx":1D498
       Left            =   2760
-      TabIndex        =   3
+      List            =   "Schedule.frx":1D49A
+      TabIndex        =   2
       Top             =   3650
       Width           =   3625
    End
-   Begin MSComCtl2.DTPicker end_date 
+   Begin MSComCtl2.DTPicker sched_date 
+      BeginProperty DataFormat 
+         Type            =   1
+         Format          =   "yyyy/MM/dd"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1033
+         SubFormatType   =   3
+      EndProperty
       Height          =   375
       Left            =   2760
-      TabIndex        =   2
-      Top             =   2925
-      Width           =   2200
-      _ExtentX        =   3889
-      _ExtentY        =   661
-      _Version        =   393216
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      CalendarTrailingForeColor=   7171437
-      CustomFormat    =   "MM/dd/yyyy"
-      Format          =   123011075
-      CurrentDate     =   40418.5
-   End
-   Begin MSComCtl2.DTPicker start_date 
-      Height          =   375
-      Left            =   2775
       TabIndex        =   1
-      Top             =   2205
-      Width           =   2170
-      _ExtentX        =   3836
+      Top             =   1480
+      Width           =   3625
+      _ExtentX        =   6403
       _ExtentY        =   661
       _Version        =   393216
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -121,17 +93,26 @@ Begin VB.Form Schedule
          Strikethrough   =   0   'False
       EndProperty
       CalendarTrailingForeColor=   7171437
-      CustomFormat    =   "MM/dd/yyyy"
-      Format          =   123011075
+      CustomFormat    =   "yyyy-MM-dd"
+      Format          =   123600899
       CurrentDate     =   40418
    End
    Begin MSComCtl2.DTPicker start_time 
+      BeginProperty DataFormat 
+         Type            =   1
+         Format          =   "HH:mm:ss"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1033
+         SubFormatType   =   4
+      EndProperty
       Height          =   375
-      Left            =   4950
-      TabIndex        =   7
+      Left            =   2760
+      TabIndex        =   5
       Top             =   2190
-      Width           =   1440
-      _ExtentX        =   2540
+      Width           =   3625
+      _ExtentX        =   6403
       _ExtentY        =   661
       _Version        =   393216
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -144,17 +125,27 @@ Begin VB.Form Schedule
          Strikethrough   =   0   'False
       EndProperty
       CalendarTrailingForeColor=   7171437
-      CustomFormat    =   "hh:mm:ss tt"
-      Format          =   123011075
-      CurrentDate     =   40418
+      CustomFormat    =   "HH:mm:ss"
+      Format          =   123600899
+      UpDown          =   -1  'True
+      CurrentDate     =   40421
    End
    Begin MSComCtl2.DTPicker end_time 
+      BeginProperty DataFormat 
+         Type            =   1
+         Format          =   "HH:mm:ss"
+         HaveTrueFalseNull=   0
+         FirstDayOfWeek  =   0
+         FirstWeekOfYear =   0
+         LCID            =   1033
+         SubFormatType   =   4
+      EndProperty
       Height          =   375
-      Left            =   4950
-      TabIndex        =   8
-      Top             =   2930
-      Width           =   1440
-      _ExtentX        =   2540
+      Left            =   2760
+      TabIndex        =   6
+      Top             =   2925
+      Width           =   3640
+      _ExtentX        =   6429
       _ExtentY        =   661
       _Version        =   393216
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -167,9 +158,9 @@ Begin VB.Form Schedule
          Strikethrough   =   0   'False
       EndProperty
       CalendarTrailingForeColor=   7171437
-      CustomFormat    =   "hh:mm:ss tt"
-      Format          =   123011075
-      CurrentDate     =   40418
+      CustomFormat    =   "HH:mm:ss"
+      Format          =   123600899
+      UpDown          =   -1  'True
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -193,14 +184,14 @@ Begin VB.Form Schedule
    Begin VB.Image Image2 
       Height          =   615
       Left            =   2520
-      Picture         =   "Schedule.frx":1D31D
+      Picture         =   "Schedule.frx":1D49C
       Top             =   6600
       Width           =   1695
    End
    Begin VB.Image Image1 
       Height          =   600
       Left            =   720
-      Picture         =   "Schedule.frx":1E06F
+      Picture         =   "Schedule.frx":1E1EE
       Top             =   6600
       Width           =   1605
    End
@@ -210,13 +201,89 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim state As String
+Private state As String
+Private room As New ModelRoom
+Private section As New ModelSection
+Private subject As New ModelSubject
+Private schedule As New ModelSchedule
+
+Private Function goEdit()
+    schedule.Day = Format$(sched_date.value, "yyyy-MM-dd")
+    schedule.StartTime = Format$(start_time.value, "h:mm:ss")
+    schedule.EndTime = Format$(end_time.value, "h:mm:ss")
+    schedule.RoomId = Me.room_sched.ListIndex + 1
+    schedule.SubjectId = Me.subj_sched.ListIndex + 1
+    schedule.SectionId = Me.sec_sched.ListIndex + 1
+    schedule.Upsert
+End Function
+Private Function goAdd()
+    Set schedule_grid = MainForm.schedule_grid
+End Function
+Private Function LoadRooms()
+    Dim rs_room As New ADODB.Recordset
+    
+    Set rs_room = room.GetAll
+    room_sched.Clear
+    Do While Not rs_room.EOF
+        room_sched.AddItem rs_room.fields("Room Name")
+        room_sched.ItemData(room_sched.NewIndex) = rs_room.fields("ID")
+        rs_room.MoveNext
+    Loop
+End Function
+Private Function LoadSubjects()
+    Dim rs_subject As New ADODB.Recordset
+    
+    Set rs_subject = subject.GetAll
+    subj_sched.Clear
+    Do While Not rs_subject.EOF
+        subj_sched.AddItem rs_subject.fields("Subject Name")
+        subj_sched.ItemData(subj_sched.NewIndex) = rs_subject.fields("ID")
+        rs_subject.MoveNext
+    Loop
+
+End Function
+Private Function LoadSections()
+    Dim rs_section As New ADODB.Recordset
+    
+    Set rs_section = section.GetAll
+    sec_sched.Clear
+    Do While Not rs_section.EOF
+        sec_sched.AddItem rs_section.fields("Section Name")
+        sec_sched.ItemData(sec_sched.NewIndex) = rs_section.fields("ID")
+        rs_section.MoveNext
+    Loop
+    
+End Function
+
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
+    
     Label1.Caption = state + " Schedule"
-    Schedule.Caption = state + " Schedule"
+    Me.Caption = state + " Schedule"
+    
     end_time.UpDown = True
     start_time.UpDown = True
+    
+    LoadRooms
+    LoadSubjects
+    LoadSections
+    
+    'goValidate
+    
+    If state = "Edit" Then
+         Set schedule_grid = MainForm.schedule_grid
+         
+         Id = schedule_grid.Bookmark
+         schedule.Load (Id)
+
+         Me.sched_date.value = schedule.Day
+         Me.start_time = schedule.StartTime
+         Me.end_time = schedule.EndTime
+         Me.sec_sched.ListIndex = schedule.SectionId - 1
+         Me.subj_sched.ListIndex = schedule.SubjectId - 1
+         Me.room_sched.ListIndex = schedule.RoomId - 1
+    End If
+    
 End Sub
 Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
@@ -237,7 +304,13 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
+    If state = "Edit" Then
+        goEdit
+    Else
+        goAdd
+    End If
     MainForm.Label2.Caption = state + "ing schedule was successful."
     MainForm.Label2.Visible = True
     Unload Me
 End Sub
+

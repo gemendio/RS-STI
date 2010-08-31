@@ -152,7 +152,7 @@ Public Function GetAll() As ADODB.Recordset
         
         rs.CursorLocation = adUseClient
         
-        sqlScript = "SELECT scd.id as ID, scd.day as Day,scd.start_time as 'Start Time',scd.end_time as 'End Time', "
+        sqlScript = "SELECT scd.id as ID, scd.day as Date, DATE_FORMAT(scd.start_time,'%T') as 'Start Time',DATE_FORMAT(scd.end_time, '%T') as 'End Time', "
         sqlScript = sqlScript + "r.name as Room,sbj.name as Subject,sec.name as Section "
         sqlScript = sqlScript + "FROM schedules scd JOIN rooms r ON r.id=scd.room_id "
         sqlScript = sqlScript + "JOIN sections sec ON sec.id=scd.section_id "
@@ -179,7 +179,7 @@ Public Function search(strSeek As String)
         rs.CursorLocation = adUseClient
         rs.CursorLocation = adUseClient
         
-        sqlScript = "SELECT scd.id as ID, scd.day as Day,scd.start_time as 'Start Time',scd.end_time as 'End Time', "
+        sqlScript = "SELECT scd.id as ID, scd.day as Date, DATE_FORMAT(scd.start_time,'%T') as 'Start Time',DATE_FORMAT(scd.end_time, '%T') as 'End Time', "
         sqlScript = sqlScript + "r.name as Room,sbj.name as Subject,sec.name as Section "
         sqlScript = sqlScript + "FROM schedules scd JOIN rooms r ON r.id=scd.room_id "
         sqlScript = sqlScript + "JOIN sections sec ON sec.id=scd.section_id "

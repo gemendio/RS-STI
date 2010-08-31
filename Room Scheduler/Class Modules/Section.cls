@@ -13,7 +13,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
-Private m_id As Integer
+Private m_id, m_user_id As Integer
 Private m_name As String
 
 Public Property Get Id() As Integer
@@ -22,6 +22,13 @@ End Property
 
 Public Property Let Id(value As Integer)
     m_id = value
+End Property
+Public Property Get UserId() As Integer
+    UserId = m_user_id
+End Property
+
+Public Property Let UserId(value As Integer)
+    m_userId = value
 End Property
 
 Public Property Get Name() As String
@@ -45,6 +52,7 @@ Public Sub Load(v_id As Integer)
                 
         Id = row(0).value
         Name = row(1).value
+        UserId = row(3).value
         
         row.Close
         conn.Close
@@ -60,8 +68,9 @@ Public Sub Upsert()
         Dim data(0) As Variant
 
         fields(0) = "name"
+        fields(1) = "user_id"
         data(0) = Name
-
+        data(1) = UserId
         Call UpsertTable("sections", data, fields, Id)
     Exit Sub
 ErrHandler:
