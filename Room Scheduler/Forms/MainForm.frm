@@ -674,8 +674,8 @@ Private Function deployTable()
                             Set section_grid.DataSource = section.GetAll
 
             Case "Users":
-                            Dim User As New ModelUser
-                            Set user_grid.DataSource = User.GetAll
+                            Dim user As New ModelUser
+                            Set user_grid.DataSource = user.GetAll
 
             Case "Schedules":
                             Dim schedule As New ModelSchedule
@@ -806,12 +806,6 @@ Private Sub Image6_Click()
     section_grid.Visible = False
     room_grid.Visible = False
     
-    sqlScript = "SELECT scd.id as ID, scd.day as Day,scd.start_time as 'Start Time',scd.end_time as 'End Time', "
-    sqlScript = sqlScript + "r.name as Room,sbj.name as Subject,sec.name as Section "
-    sqlScript = sqlScript + "FROM schedules scd JOIN rooms r ON r.id=scd.room_id "
-    sqlScript = sqlScript + "JOIN sections sec ON sec.id=scd.section_id "
-    sqlScript = sqlScript + "JOIN subjects sbj ON sbj.id=scd.subject_id "
-    
     deployTable
 End Sub
 
@@ -874,20 +868,20 @@ Private Function goAdd()
     
     Select Case currentTab
             Case "Rooms":
-                            'Set Adodc5.Recordset = Adodc1.Recordset
                             LoadRoom ("Add")
+                            deployTable
             Case "Subjects":
-                            'Set Adodc5.Recordset = Adodc2.Recordset
                             LoadSubject ("Add")
+                            deployTable
             Case "Sections":
-                            'Set Adodc5.Recordset = Adodc3.Recordset
                             LoadSection ("Add")
+                            deployTable
             Case "Users":
-                            'Set Adodc5.Recordset = Adodc4.Recordset
                             LoadUser ("Add")
+                            deployTable
             Case "Schedules":
-                            'Set Adodc5.Recordset = Adodc6.Recordset
                             LoadSchedule ("Add")
+                            deployTable
             Case Else: Label2.Caption = ""
         End Select
 End Function
@@ -900,23 +894,18 @@ Private Function goEdit()
             Case "Rooms":
                             LoadRoom ("Edit")
                             deployTable
-                            room_grid.Refresh
             Case "Subjects":
                             LoadSubject ("Edit")
                             deployTable
-                            subject_grid.Refresh
             Case "Sections":
                             LoadSection ("Edit")
                             deployTable
-                            section_grid.Refresh
             Case "Users":
                             LoadUser ("Edit")
                             deployTable
-                            user_grid.Refresh
             Case "Schedules":
                             LoadSchedule ("Edit")
                             deployTable
-                            schedule_grid.Refresh
             Case Else: Label2.Caption = ""
         End Select
 End Function
@@ -925,9 +914,9 @@ Private Function goDel()
     On Error GoTo ErrFound
     
     Dim currentTab As String
-    currentTab = Label1.Caption
-         
     Dim tmp As Integer
+    
+    currentTab = Label1.Caption
     
     tmp = MsgBox("Are you sure to delete this record?", vbYesNo, "Delete Record?")
     
@@ -939,42 +928,47 @@ Private Function goDel()
     
     Select Case currentTab
             Case "Rooms":
-                           ' Set Adodc5.Recordset = Adodc1.Recordset
-                           ' Adodc5.Recordset!LName = "null"
-                           ' Adodc5.Recordset.Update
-                           ' Adodc1.Refresh
+                           Dim room As New ModelRoom
+                           room.Id = room_grid.Bookmark
+                           room.Delete
+                           deployTable
+                           
                            Label2.Caption = "A room record was deleted."
                            Label2.Visible = True
                             
             Case "Subjects":
-                           ' Set Adodc5.Recordset = Adodc2.Recordset
-                           ' Adodc5.Recordset!LName = "null"
-                           ' Adodc5.Recordset.Update
-                           ' Adodc2.Refresh
+                           Dim subject As New ModelSubject
+                           subject.Id = subject_grid.Bookmark
+                           subject.Delete
+                           deployTable
+                           
                            Label2.Caption = "A subject record was deleted."
                            Label2.Visible = True
                            
             Case "Sections":
-                           ' Set Adodc5.Recordset = Adodc3.Recordset
-                           ' Adodc5.Recordset!LoanName = "null"
-                           ' Adodc5.Recordset.Update
-                           ' Adodc3.Refresh
+                           Dim section As New ModelSection
+                           section.Id = section_grid.Bookmark
+                           section.Delete
+                           deployTable
+                           
                            Label2.Caption = "A section record was deleted."
                            Label2.Visible = True
                            
             Case "Users":
-                           ' Set Adodc5.Recordset = Adodc4.Recordset
-                           ' Adodc5.Recordset!TermType = "null"
-                           ' Adodc5.Recordset.Update
-                           ' Adodc4.Refresh
+                           Dim user As New ModelUser
+                           user.Id = user_grid.Bookmark
+                           user.Delete
+                           deployTable
+                           
                            Label2.Caption = "A user record was deleted."
                            Label2.Visible = True
                            
             Case "Schedules":
-                           ' Set Adodc5.Recordset = Adodc6.Recordset
-                           ' Adodc5.Recordset!Name = "null"
-                           ' Adodc5.Recordset.Update
-                           ' Adodc6.Refresh
+                           Dim schedule As New ModelSchedule
+                           schedule.Id = schedule_grid.Bookmark
+                           schedule.Delete
+                           deployTable
+                           
                            Label2.Caption = "A schedule record was deleted."
                            Label2.Visible = True
             Case Else: Label2.Caption = ""
@@ -1012,8 +1006,8 @@ Private Function goSearch()
                          subject_grid.Refresh
                          
             Case "Users":
-                         Dim User As New ModelUser
-                         Set user_grid.DataSource = User.search(strSeek)
+                         Dim user As New ModelUser
+                         Set user_grid.DataSource = user.search(strSeek)
                          user_grid.Refresh
                          
             Case "Schedules":
@@ -1031,8 +1025,8 @@ Private Function LoadRoom(args As String)
     room.Show vbModal
 End Function
 Private Function LoadUser(args As String)
-    Load User
-    User.Show vbModal
+    Load user
+    user.Show vbModal
 End Function
 Private Function LoadSubject(args As String)
     Load subject

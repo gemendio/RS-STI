@@ -89,8 +89,7 @@ Public Function GetAll() As ADODB.Recordset
             
         rs.CursorLocation = adUseClient
         
-        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name' "
-        sqlScript = sqlScript + "FROM sections sec JOIN users usr ON sec.user_id=usr.id"
+        sqlScript = "SELECT id as ID, name as 'Section Name' FROM sections "
         
         rs.Open sqlScript, conn, adOpenStatic, adLockOptimistic
         
@@ -111,10 +110,7 @@ Public Function search(strSeek As String)
         conn.Open
         
         rs.CursorLocation = adUseClient
-        
-        sqlScript = "SELECT sec.id as ID, sec.name as 'Section Name' as User FROM sections sec JOIN users usr ON sec.user_id=usr.id "
-        sqlScript = sqlScript + "  WHERE CONCAT(sec.name, usr.last_name, usr.first_name) LIKE '%" + strSeek + "%'"
-        
+        sqlScript = "SELECT id as ID, name as 'Section Name' FROM sections "
         rs.Open sqlScript, conn
         
         Set search = rs

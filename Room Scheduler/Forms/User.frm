@@ -11,6 +11,82 @@ Begin VB.Form User
    ScaleHeight     =   7650
    ScaleWidth      =   7050
    StartUpPosition =   2  'CenterScreen
+   Begin VB.ComboBox user_type 
+      Appearance      =   0  'Flat
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   360
+      ItemData        =   "User.frx":1AFFD
+      Left            =   2760
+      List            =   "User.frx":1B007
+      TabIndex        =   4
+      Top             =   3640
+      Width           =   3625
+   End
+   Begin VB.TextBox last_name 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000009&
+      Height          =   370
+      Left            =   2790
+      TabIndex        =   3
+      Top             =   2930
+      Width           =   3490
+   End
+   Begin VB.TextBox middle_name 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000009&
+      Height          =   370
+      Left            =   2790
+      TabIndex        =   2
+      Top             =   2200
+      Width           =   3490
+   End
+   Begin VB.TextBox first_name 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000009&
+      Height          =   370
+      Left            =   2790
+      TabIndex        =   1
+      Top             =   1510
+      Width           =   3490
+   End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       BeginProperty Font 
@@ -32,14 +108,14 @@ Begin VB.Form User
    Begin VB.Image Image2 
       Height          =   615
       Left            =   2520
-      Picture         =   "User.frx":1AFFD
+      Picture         =   "User.frx":1B020
       Top             =   6600
       Width           =   1695
    End
    Begin VB.Image Image1 
       Height          =   600
       Left            =   720
-      Picture         =   "User.frx":1BD4F
+      Picture         =   "User.frx":1BD72
       Top             =   6600
       Width           =   1605
    End
@@ -49,14 +125,28 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim state As String
+Private state As String
+Private user_grid As DataGrid
+Private Id As Integer
+Private user As New ModelUser
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " User"
-    User.Caption = state + " User"
+    Me.Caption = state + " User"
+    Set user_grid = MainForm.user_grid
+    
+    If state = "Edit" Then
+         Id = user_grid.Bookmark
+         user.Load (Id)
+         first_name.Text = user.FirstName
+         middle_name.Text = user.MiddleName
+         last_name.Text = user.LastName
+         user_type.Text = user.UserType
+    Else
+        user.Id = 0
+    End If
 End Sub
-
 
 Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
@@ -79,6 +169,12 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
+    user.FirstName = first_name.Text
+    user.MiddleName = middle_name.Text
+    user.LastName = last_name.Text
+    user.UserType = user_type.Text
+    user.Upsert
+    
     MainForm.Label2.Caption = state + "ing user was successful."
     MainForm.Label2.Visible = True
     Unload Me

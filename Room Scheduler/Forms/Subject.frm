@@ -72,26 +72,21 @@ Private subject_grid As DataGrid
 Private Id As Integer
 Private subject As New ModelSubject
 
-Public Function goEdit()
-    subject.Name = subject_name.Text
-    subject.Upsert
-End Function
-Public Function goAdd()
-    Set subject_grid = MainForm.subject_grid
-End Function
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Subject"
     Me.Caption = state + " Subject"
+    Set subject_grid = MainForm.subject_grid
     
     If state = "Edit" Then
-         Set subject_grid = MainForm.subject_grid
+
          Id = subject_grid.Bookmark
          subject.Load (Id)
          subject_name.Text = subject.Name
+    Else
+        subject.Id = 0
     End If
 End Sub
-
 
 Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
@@ -114,11 +109,8 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
-    If state = "Edit" Then
-        goEdit
-    Else
-        goAdd
-    End If
+    subject.Name = subject_name.Text
+    subject.Upsert
     
     MainForm.Label2.Caption = state + "ing subject was successful."
     MainForm.Label2.Visible = True

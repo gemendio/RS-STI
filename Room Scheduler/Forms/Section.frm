@@ -73,29 +73,20 @@ Private section_grid As DataGrid
 Private Id As Integer
 Private section As New ModelSection
 
-
-Public Function goEdit()
-    section.Name = section_name.Text
-    section.Upsert
-End Function
-
-Public Function goAdd()
-    Set section_grid = MainForm.section_grid
-End Function
-
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Section"
     Me.Caption = state + " Section"
-    
+    Set section_grid = MainForm.section_grid
+             
     'goValidate
     
     If state = "Edit" Then
-         Set section_grid = MainForm.section_grid
-         
          Id = section_grid.Bookmark
          section.Load (Id)
          Me.section_name.Text = section.Name
+    Else
+        section.Id = 0
     End If
     
 End Sub
@@ -122,11 +113,9 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
-    If state = "Edit" Then
-        goEdit
-    Else
-        goAdd
-    End If
+    section.Name = section_name.Text
+    section.Upsert
+    
     MainForm.Label2.Caption = state + "ing section was successful."
     MainForm.Label2.Visible = True
     Unload Me

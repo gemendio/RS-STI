@@ -93,8 +93,8 @@ Begin VB.Form Schedule
          Strikethrough   =   0   'False
       EndProperty
       CalendarTrailingForeColor=   7171437
-      CustomFormat    =   "yyyy-MM-dd"
-      Format          =   123600899
+      CustomFormat    =   "yyyy/MM/dd"
+      Format          =   125763587
       CurrentDate     =   40418
    End
    Begin MSComCtl2.DTPicker start_time 
@@ -126,7 +126,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   123600899
+      Format          =   125763587
       UpDown          =   -1  'True
       CurrentDate     =   40421
    End
@@ -159,8 +159,9 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   123600899
+      Format          =   125763587
       UpDown          =   -1  'True
+      CurrentDate     =   40422
    End
    Begin VB.Label Label1 
       Alignment       =   2  'Center
@@ -207,19 +208,7 @@ Private section As New ModelSection
 Private subject As New ModelSubject
 Private schedule As New ModelSchedule
 
-Private Function goEdit()
-    schedule.Day = Format$(sched_date.value, "yyyy-MM-dd")
-    schedule.StartTime = Format$(start_time.value, "h:mm:ss")
-    schedule.EndTime = Format$(end_time.value, "h:mm:ss")
-    schedule.RoomId = Me.room_sched.ListIndex + 1
-    schedule.SubjectId = Me.subj_sched.ListIndex + 1
-    schedule.SectionId = Me.sec_sched.ListIndex + 1
-    schedule.Upsert
-End Function
-Private Function goAdd()
-    Set schedule_grid = MainForm.schedule_grid
-End Function
-Private Function LoadRooms()
+Public Function LoadRooms()
     Dim rs_room As New ADODB.Recordset
     
     Set rs_room = room.GetAll
@@ -230,7 +219,7 @@ Private Function LoadRooms()
         rs_room.MoveNext
     Loop
 End Function
-Private Function LoadSubjects()
+Public Function LoadSubjects()
     Dim rs_subject As New ADODB.Recordset
     
     Set rs_subject = subject.GetAll
@@ -242,7 +231,7 @@ Private Function LoadSubjects()
     Loop
 
 End Function
-Private Function LoadSections()
+Public Function LoadSections()
     Dim rs_section As New ADODB.Recordset
     
     Set rs_section = section.GetAll
@@ -260,29 +249,28 @@ Private Sub Form_Load()
     
     Label1.Caption = state + " Schedule"
     Me.Caption = state + " Schedule"
-    
-    end_time.UpDown = True
-    start_time.UpDown = True
-    
+
+    Set schedule_grid = MainForm.schedule_grid
     LoadRooms
     LoadSubjects
     LoadSections
-    
+    sched_date.value = Format$(Now(), "yyyy/MM/dd")
     'goValidate
     
     If state = "Edit" Then
-         Set schedule_grid = MainForm.schedule_grid
-         
          Id = schedule_grid.Bookmark
          schedule.Load (Id)
-
+         
          Me.sched_date.value = schedule.Day
          Me.start_time = schedule.StartTime
          Me.end_time = schedule.EndTime
-         Me.sec_sched.ListIndex = schedule.SectionId - 1
+         Me.sec_sched.ListIndex = schedule.SectionId
          Me.subj_sched.ListIndex = schedule.SubjectId - 1
          Me.room_sched.ListIndex = schedule.RoomId - 1
+    Else
+        schedule.Id = 0
     End If
+
     
 End Sub
 Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -304,11 +292,14 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
-    If state = "Edit" Then
-        goEdit
-    Else
-        goAdd
-    End If
+    schedule.Day = Format$(sched_date.value, "yyyy/MM/dd")
+    schedule.StartTime = Format$(start_time.value, "h:mm:ss")
+    schedule.EndTime = Format$(end_time.value, "h:mm:ss")
+    schedule.RoomId = Me.room_sched.ListIndex + 1
+    schedule.SubjectId = Me.subj_sched.ListIndex + 1
+    schedule.SectionId = Me.sec_sched.ListIndex + 1
+    schedule.Upsert
+    
     MainForm.Label2.Caption = state + "ing schedule was successful."
     MainForm.Label2.Visible = True
     Unload Me

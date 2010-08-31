@@ -75,24 +75,18 @@ Private room_grid As DataGrid
 Private Id As Integer
 Private room As New ModelRoom
 
-Public Function goEdit()
-    room.Name = room_name.Text
-    room.Upsert
-End Function
-Public Function goAdd()
-    Set room_grid = MainForm.room_grid
-End Function
-
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Room"
     Me.Caption = state + " Room"
+    Set room_grid = MainForm.room_grid
     
     If state = "Edit" Then
-         Set room_grid = MainForm.room_grid
          Id = room_grid.Bookmark
          room.Load (Id)
          room_name.Text = room.Name
+    Else
+        room.Id = 0
     End If
     
 End Sub
@@ -118,11 +112,8 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
-    If state = "Edit" Then
-        goEdit
-    Else
-        goAdd
-    End If
+    room.Name = room_name.Text
+    room.Upsert
     
     MainForm.Label2.Caption = state + "ing room was successful."
     MainForm.Label2.Visible = True
