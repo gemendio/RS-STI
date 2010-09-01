@@ -94,7 +94,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "yyyy/MM/dd"
-      Format          =   125763587
+      Format          =   124059651
       CurrentDate     =   40418
    End
    Begin MSComCtl2.DTPicker start_time 
@@ -126,7 +126,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   125763587
+      Format          =   124059651
       UpDown          =   -1  'True
       CurrentDate     =   40421
    End
@@ -159,7 +159,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   125763587
+      Format          =   124059651
       UpDown          =   -1  'True
       CurrentDate     =   40422
    End
@@ -258,7 +258,7 @@ Private Sub Form_Load()
     'goValidate
     
     If state = "Edit" Then
-         Id = schedule_grid.Bookmark
+         Id = schedule_grid.Columns("ID")
          schedule.Load (Id)
          
          Me.sched_date.value = schedule.Day
@@ -273,16 +273,16 @@ Private Sub Form_Load()
 
     
 End Sub
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
 Private Sub Image2_Click()

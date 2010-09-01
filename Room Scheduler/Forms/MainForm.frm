@@ -689,14 +689,14 @@ Private Sub Form_Load()
     msgFadeout
     deployTable
 End Sub
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
 End Sub
 
 Private Sub Image11_Click()
     goSearch
 End Sub
-Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image11.Picture = ImageList1.ListImages(22).Picture
 End Sub
@@ -735,7 +735,7 @@ Private Sub Image2_Click()
 
 End Sub
 
-Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image2.Picture = ImageList1.ListImages(2).Picture
 End Sub
@@ -753,7 +753,7 @@ Private Sub Image3_Click()
     deployTable
 End Sub
 
-Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image3.Picture = ImageList1.ListImages(4).Picture
 End Sub
@@ -771,7 +771,7 @@ Private Sub Image4_Click()
     deployTable
 End Sub
 
-Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image4.Picture = ImageList1.ListImages(6).Picture
 End Sub
@@ -790,7 +790,7 @@ Private Sub Image5_Click()
     deployTable
 End Sub
 
-Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image5.Picture = ImageList1.ListImages(8).Picture
 End Sub
@@ -809,16 +809,16 @@ Private Sub Image6_Click()
     deployTable
 End Sub
 
-Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image6.Picture = ImageList1.ListImages(10).Picture
 End Sub
 
-Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image12.Picture = ImageList1.ListImages(12).Picture
 End Sub
-Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image13.Picture = ImageList1.ListImages(14).Picture
 End Sub
@@ -827,7 +827,7 @@ Private Sub Image7_Click()
     goAdd
 End Sub
 
-Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
      buttonsOut
     Set Image7.Picture = ImageList1.ListImages(16).Picture
 End Sub
@@ -836,7 +836,7 @@ Private Sub Image8_Click()
     goEdit
 End Sub
 
-Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image8.Picture = ImageList1.ListImages(18).Picture
 End Sub
@@ -845,7 +845,7 @@ Private Sub Image9_Click()
     goDel
 End Sub
 
-Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set Image9.Picture = ImageList1.ListImages(20).Picture
 End Sub
@@ -868,22 +868,23 @@ Private Function goAdd()
     
     Select Case currentTab
             Case "Rooms":
-                            LoadRoom ("Add")
-                            deployTable
+                            Load room
+                            room.Show vbModal
             Case "Subjects":
-                            LoadSubject ("Add")
-                            deployTable
+                            Load subject
+                            subject.Show vbModal
             Case "Sections":
-                            LoadSection ("Add")
-                            deployTable
+                            Load section
+                            section.Show vbModal
             Case "Users":
-                            LoadUser ("Add")
-                            deployTable
+                            Load user
+                            user.Show vbModal
             Case "Schedules":
-                            LoadSchedule ("Add")
-                            deployTable
+                            Load schedule
+                            schedule.Show vbModal
             Case Else: Label2.Caption = ""
         End Select
+        deployTable
 End Function
 Private Function goEdit()
     Dim currentTab As String
@@ -892,25 +893,27 @@ Private Function goEdit()
         
     Select Case currentTab
             Case "Rooms":
-                            LoadRoom ("Edit")
-                            deployTable
+                            Load room
+                            room.Show vbModal
             Case "Subjects":
-                            LoadSubject ("Edit")
-                            deployTable
+                            Load subject
+                            subject.Show vbModal
             Case "Sections":
-                            LoadSection ("Edit")
-                            deployTable
+                            Load section
+                            section.Show vbModal
             Case "Users":
-                            LoadUser ("Edit")
-                            deployTable
+                            Load user
+                            user.Show vbModal
             Case "Schedules":
-                            LoadSchedule ("Edit")
-                            deployTable
+                            Load schedule
+                            schedule.Show vbModal
             Case Else: Label2.Caption = ""
         End Select
+        deployTable
 End Function
 
 Private Function goDel()
+Dim x As String
     On Error GoTo ErrFound
     
     Dim currentTab As String
@@ -929,50 +932,46 @@ Private Function goDel()
     Select Case currentTab
             Case "Rooms":
                            Dim room As New ModelRoom
-                           room.Id = room_grid.Bookmark
+                           room.Id = room_grid.Columns("ID")
                            room.Delete
-                           deployTable
                            
                            Label2.Caption = "A room record was deleted."
                            Label2.Visible = True
                             
             Case "Subjects":
                            Dim subject As New ModelSubject
-                           subject.Id = subject_grid.Bookmark
+                           subject.Id = subject_grid.Columns("ID")
                            subject.Delete
-                           deployTable
                            
                            Label2.Caption = "A subject record was deleted."
                            Label2.Visible = True
                            
             Case "Sections":
                            Dim section As New ModelSection
-                           section.Id = section_grid.Bookmark
+                           section.Id = section_grid.Columns("ID")
                            section.Delete
-                           deployTable
                            
                            Label2.Caption = "A section record was deleted."
                            Label2.Visible = True
                            
             Case "Users":
                            Dim user As New ModelUser
-                           user.Id = user_grid.Bookmark
+                           user.Id = user_grid.Columns("ID")
                            user.Delete
-                           deployTable
                            
                            Label2.Caption = "A user record was deleted."
                            Label2.Visible = True
                            
             Case "Schedules":
                            Dim schedule As New ModelSchedule
-                           schedule.Id = schedule_grid.Bookmark
+                           schedule.Id = schedule_grid.Columns("ID")
                            schedule.Delete
-                           deployTable
                            
                            Label2.Caption = "A schedule record was deleted."
                            Label2.Visible = True
             Case Else: Label2.Caption = ""
         End Select
+        deployTable
     Exit Function
 
 ErrFound:
@@ -1019,29 +1018,4 @@ Private Function goSearch()
         End Select
 
 End Function
-
-Private Function LoadRoom(args As String)
-    Load room
-    room.Show vbModal
-End Function
-Private Function LoadUser(args As String)
-    Load user
-    user.Show vbModal
-End Function
-Private Function LoadSubject(args As String)
-    Load subject
-    subject.Show vbModal
-End Function
-Private Function LoadSection(args As String)
-    Load section
-    section.Show vbModal
-End Function
-Private Function LoadSchedule(args As String)
-    Load schedule
-    schedule.Show vbModal
-End Function
-
-
-
-
 
