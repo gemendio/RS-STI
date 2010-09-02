@@ -6,6 +6,8 @@ Begin VB.Form frmLogin
    ClientTop       =   345
    ClientWidth     =   4155
    LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
    ScaleHeight     =   2775
    ScaleWidth      =   4155
    StartUpPosition =   3  'Windows Default
