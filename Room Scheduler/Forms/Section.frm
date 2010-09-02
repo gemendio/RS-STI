@@ -82,7 +82,7 @@ Private Sub Form_Load()
     'goValidate
     
     If state = "Edit" Then
-         Id = section_grid.Bookmark
+         Id = section_grid.Columns("ID")
          section.Load (Id)
          Me.section_name.Text = section.Name
     Else
@@ -92,18 +92,18 @@ Private Sub Form_Load()
 End Sub
 
 
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
 
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
 
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
 Private Sub Image2_Click()

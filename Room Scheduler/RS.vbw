@@ -1,6 +1,6 @@
 ModelRoom = 21, 6, 916, 457, I
 Global = 17, 100, 912, 551, 
-MainForm = 50, 89, 790, 558, Z, -4, -13, 1035, 648, C
+MainForm = 50, 89, 790, 558, , -4, -13, 1035, 648, C
 ModelSection = 74, -11, 917, 440, 
 ModelUser = 50, 50, 893, 501, 
 Section = 0, 0, 935, 389, , 74, 24, 917, 646, C
@@ -11,3 +11,4 @@ User = 25, 25, 913, 414, , 163, 6, 1006, 633, C
 ModelSchedule = 45, 109, 888, 560, 
 ModelSubject = 75, 75, 918, 526, 
 ModelSectionUser = 25, 25, 868, 476, 
+frmODBCLogon = 0, 0, 0, 0, C, 175, 175, 907, 626, C

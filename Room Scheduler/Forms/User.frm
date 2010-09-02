@@ -137,7 +137,7 @@ Private Sub Form_Load()
     Set user_grid = MainForm.user_grid
     
     If state = "Edit" Then
-         Id = user_grid.Bookmark
+         Id = user_grid.Columns("ID")
          user.Load (Id)
          first_name.Text = user.FirstName
          middle_name.Text = user.MiddleName
@@ -148,18 +148,18 @@ Private Sub Form_Load()
     End If
 End Sub
 
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
 
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
 
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
 Private Sub Image2_Click()
