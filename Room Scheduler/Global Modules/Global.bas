@@ -5,7 +5,7 @@ Public Function db() As ADODB.Connection
                          & "SERVER=localhost;" _
                          & "DATABASE=room_scheduler;" _
                          & "UID=root;" _
-                         & "PWD=amirah@1;" _
+                         & "PWD=p@ssword;" _
                          & "OPTION=3"
     Set db = c
 End Function
@@ -93,28 +93,6 @@ Public Sub DeleteFromTable(table_name As String, where As String)
     conn.Close
 End Sub
 
-Public Function RemoveArrayElement(v_array As Variant, element As Integer) As Variant()
-    Dim i, n As Integer
-    Dim new_array() As Variant
-    ReDim new_array(UBound(v_array) - 1)
-    
-    n = 0
-    
-    For i = 0 To UBound(v_array)
-        If i = element Then
-            i = i + 1
-        End If
-        
-        If i > UBound(v_array) Then
-            Exit For
-        Else
-            new_array(n) = v_array(i)
-        End If
-        
-        n = n + 1
-    Next
-    
-    RemoveArrayElement = new_array
-End Function
+
 
 
