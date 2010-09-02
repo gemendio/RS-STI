@@ -23,7 +23,7 @@ Begin VB.Form Section
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H80000009&
+      ForeColor       =   &H80000007&
       Height          =   370
       Left            =   2880
       TabIndex        =   1
@@ -71,7 +71,7 @@ Attribute VB_Exposed = False
 Private state As String
 Private section_grid As DataGrid
 Private Id As Integer
-Private section As New ModelSection
+Private section As New Model.section
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption

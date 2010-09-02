@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form MainForm 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
@@ -663,22 +663,22 @@ Private Function deployTable()
     
     Select Case currentTab
             Case "Rooms":
-                            Dim room As New ModelRoom
+                            Dim room As New Model.room
                             Set room_grid.DataSource = room.GetAll
             Case "Subjects":
-                            Dim subject As New ModelSubject
+                            Dim subject As New Model.subject
                             Set subject_grid.DataSource = subject.GetAll
 
             Case "Sections":
-                            Dim section As New ModelSection
+                            Dim section As New Model.section
                             Set section_grid.DataSource = section.GetAll
 
             Case "Users":
-                            Dim user As New ModelUser
+                            Dim user As New Model.user
                             Set user_grid.DataSource = user.GetAll
 
             Case "Schedules":
-                            Dim schedule As New ModelSchedule
+                            Dim schedule As New Model.schedule
                             Set schedule_grid.DataSource = schedule.GetAll
             
             Case Else: Label2.Caption = ""
@@ -931,40 +931,40 @@ Dim x As String
     
     Select Case currentTab
             Case "Rooms":
-                           Dim room As New ModelRoom
-                           room.Id = room_grid.Columns("ID")
+                           Dim room As New Model.room
+                           room.Load (room_grid.Columns("ID"))
                            room.Delete
                            
                            Label2.Caption = "A room record was deleted."
                            Label2.Visible = True
                             
             Case "Subjects":
-                           Dim subject As New ModelSubject
-                           subject.Id = subject_grid.Columns("ID")
+                           Dim subject As New Model.subject
+                           subject.Load (subject_grid.Columns("ID"))
                            subject.Delete
                            
                            Label2.Caption = "A subject record was deleted."
                            Label2.Visible = True
                            
             Case "Sections":
-                           Dim section As New ModelSection
-                           section.Id = section_grid.Columns("ID")
+                           Dim section As New Model.section
+                           section.Load (section_grid.Columns("ID"))
                            section.Delete
                            
                            Label2.Caption = "A section record was deleted."
                            Label2.Visible = True
                            
             Case "Users":
-                           Dim user As New ModelUser
-                           user.Id = user_grid.Columns("ID")
+                           Dim user As New Model.user
+                           user.Load (user_grid.Columns("ID"))
                            user.Delete
                            
                            Label2.Caption = "A user record was deleted."
                            Label2.Visible = True
                            
             Case "Schedules":
-                           Dim schedule As New ModelSchedule
-                           schedule.Id = schedule_grid.Columns("ID")
+                           Dim schedule As New Model.schedule
+                           schedule.Load (schedule_grid.Columns("ID"))
                            schedule.Delete
                            
                            Label2.Caption = "A schedule record was deleted."
@@ -992,25 +992,25 @@ Private Function goSearch()
         
         Select Case currentTab
             Case "Rooms":
-                         Dim room As New ModelRoom
+                         Dim room As New Model.room
                          Set room_grid.DataSource = room.search(strSeek)
                          room_grid.Refresh
             Case "Sections":
-                         Dim section As New ModelSection
+                         Dim section As New Model.section
                          Set section_grid.DataSource = section.search(strSeek)
                          section_grid.Refresh
             Case "Subjects":
-                         Dim subject As New ModelSubject
+                         Dim subject As New Model.subject
                          Set subject_grid.DataSource = subject.search(strSeek)
                          subject_grid.Refresh
                          
             Case "Users":
-                         Dim user As New ModelUser
+                         Dim user As New Model.user
                          Set user_grid.DataSource = user.search(strSeek)
                          user_grid.Refresh
                          
             Case "Schedules":
-                         Dim schedule As New ModelSchedule
+                         Dim schedule As New Model.schedule
                          Set schedule_grid.DataSource = schedule.search(strSeek)
                          schedule_grid.Refresh
 

@@ -70,7 +70,7 @@ Attribute VB_Exposed = False
 Private state As String
 Private subject_grid As DataGrid
 Private Id As Integer
-Private subject As New ModelSubject
+Private subject As New Model.subject
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption

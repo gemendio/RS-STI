@@ -128,7 +128,7 @@ Attribute VB_Exposed = False
 Private state As String
 Private user_grid As DataGrid
 Private Id As Integer
-Private user As New ModelUser
+Private user As New Model.user
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption

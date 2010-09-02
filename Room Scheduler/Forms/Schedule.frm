@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form Schedule 
    Caption         =   "Form1"
    ClientHeight    =   7650
@@ -94,7 +94,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "yyyy/MM/dd"
-      Format          =   124059651
+      Format          =   16252931
       CurrentDate     =   40418
    End
    Begin MSComCtl2.DTPicker start_time 
@@ -126,7 +126,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   124059651
+      Format          =   16252931
       UpDown          =   -1  'True
       CurrentDate     =   40421
    End
@@ -159,7 +159,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   124059651
+      Format          =   16252931
       UpDown          =   -1  'True
       CurrentDate     =   40422
    End
@@ -203,10 +203,10 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private state As String
-Private room As New ModelRoom
-Private section As New ModelSection
-Private subject As New ModelSubject
-Private schedule As New ModelSchedule
+Private room As New Model.room
+Private section As New Model.section
+Private subject As New Model.subject
+Private schedule As New Model.schedule
 
 Public Function LoadRooms()
     Dim rs_room As New ADODB.Recordset

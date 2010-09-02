@@ -25,7 +25,7 @@ Begin VB.Form Room
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H80000009&
+      ForeColor       =   &H80000007&
       Height          =   370
       Left            =   2800
       TabIndex        =   1
@@ -73,7 +73,7 @@ Attribute VB_Exposed = False
 Private state As String
 Private room_grid As DataGrid
 Private Id As Integer
-Private room As New ModelRoom
+Private room As New Model.room
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
