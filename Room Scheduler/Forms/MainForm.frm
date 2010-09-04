@@ -1,7 +1,8 @@
 VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form MainForm 
+   BackColor       =   &H80000010&
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
    ClientHeight    =   10380
@@ -19,42 +20,24 @@ Begin VB.Form MainForm
    EndProperty
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
+   MinButton       =   0   'False
    Picture         =   "MainForm.frx":0000
    ScaleHeight     =   10380
    ScaleWidth      =   17310
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
-   Begin VB.TextBox searchStr 
-      Appearance      =   0  'Flat
-      BorderStyle     =   0  'None
-      BeginProperty Font 
-         Name            =   "Microsoft Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   420
-      Left            =   11400
-      TabIndex        =   7
-      Top             =   2040
-      Width           =   4335
-   End
-   Begin VB.Timer Timer1 
-      Left            =   2400
-      Top             =   1560
-   End
    Begin MSDataGridLib.DataGrid schedule_grid 
-      Height          =   6015
+      Height          =   5850
       Left            =   5040
       TabIndex        =   5
-      Top             =   2880
+      Top             =   2920
       Width           =   11535
       _ExtentX        =   20346
-      _ExtentY        =   10610
+      _ExtentY        =   10319
       _Version        =   393216
+      AllowUpdate     =   0   'False
+      Appearance      =   0
+      BackColor       =   16777215
       HeadLines       =   1
       RowHeight       =   15
       BeginProperty HeadFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -104,20 +87,44 @@ Begin VB.Form MainForm
       EndProperty
       SplitCount      =   1
       BeginProperty Split0 
+         AllowSizing     =   0   'False
+         Locked          =   -1  'True
          BeginProperty Column00 
          EndProperty
          BeginProperty Column01 
          EndProperty
       EndProperty
    End
+   Begin VB.TextBox searchStr 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   435
+      Left            =   12135
+      TabIndex        =   7
+      Top             =   2050
+      Width           =   3720
+   End
+   Begin VB.Timer Timer1 
+      Left            =   2400
+      Top             =   1560
+   End
    Begin MSDataGridLib.DataGrid section_grid 
-      Height          =   6015
+      Height          =   5850
       Left            =   5040
       TabIndex        =   4
-      Top             =   2880
+      Top             =   2920
       Width           =   11535
       _ExtentX        =   20346
-      _ExtentY        =   10610
+      _ExtentY        =   10319
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -175,13 +182,13 @@ Begin VB.Form MainForm
       EndProperty
    End
    Begin MSDataGridLib.DataGrid user_grid 
-      Height          =   6015
+      Height          =   5850
       Left            =   5040
       TabIndex        =   3
-      Top             =   2880
+      Top             =   2920
       Width           =   11535
       _ExtentX        =   20346
-      _ExtentY        =   10610
+      _ExtentY        =   10319
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -239,13 +246,13 @@ Begin VB.Form MainForm
       EndProperty
    End
    Begin MSDataGridLib.DataGrid subject_grid 
-      Height          =   6015
+      Height          =   5850
       Left            =   5040
       TabIndex        =   2
-      Top             =   2880
+      Top             =   2920
       Width           =   11535
       _ExtentX        =   20346
-      _ExtentY        =   10610
+      _ExtentY        =   10319
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -303,13 +310,13 @@ Begin VB.Form MainForm
       EndProperty
    End
    Begin MSDataGridLib.DataGrid room_grid 
-      Height          =   6015
+      Height          =   5850
       Left            =   5040
       TabIndex        =   0
-      Top             =   2880
+      Top             =   2920
       Width           =   11535
       _ExtentX        =   20346
-      _ExtentY        =   10610
+      _ExtentY        =   10319
       _Version        =   393216
       AllowUpdate     =   0   'False
       HeadLines       =   1
@@ -380,19 +387,19 @@ Begin VB.Form MainForm
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
          NumListImages   =   4
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":3F5FC
+            Picture         =   "MainForm.frx":442C7
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":40B2E
+            Picture         =   "MainForm.frx":457F9
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":42060
+            Picture         =   "MainForm.frx":46D2B
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":43746
+            Picture         =   "MainForm.frx":48411
             Key             =   ""
          EndProperty
       EndProperty
@@ -439,78 +446,71 @@ Begin VB.Form MainForm
       Width           =   2415
    End
    Begin VB.Image Image13 
-      Height          =   825
-      Left            =   240
-      Picture         =   "MainForm.frx":44E2C
-      Top             =   9360
-      Width           =   2190
+      Height          =   945
+      Left            =   120
+      Picture         =   "MainForm.frx":49AF7
+      Top             =   9345
+      Width           =   975
    End
    Begin VB.Image Image12 
       Height          =   1245
       Left            =   0
-      Picture         =   "MainForm.frx":46650
-      Top             =   7080
-      Width           =   4455
-   End
-   Begin VB.Image Image11 
-      Height          =   735
-      Left            =   15960
-      Picture         =   "MainForm.frx":49D07
-      Top             =   1920
-      Width           =   765
+      Picture         =   "MainForm.frx":4A9C0
+      Top             =   7150
+      Width           =   4470
    End
    Begin VB.Image Image10 
-      Height          =   735
-      Left            =   11280
-      Picture         =   "MainForm.frx":4A4F6
+      Height          =   720
+      Left            =   11880
+      Picture         =   "MainForm.frx":4DF40
       Top             =   1920
-      Width           =   4635
+      Width           =   4740
    End
    Begin VB.Image Image9 
-      Height          =   735
-      Left            =   10080
-      Picture         =   "MainForm.frx":4A86E
+      Height          =   750
+      Left            =   11280
+      Picture         =   "MainForm.frx":4E83F
       Top             =   1905
-      Width           =   615
+      Width           =   510
    End
    Begin VB.Image Image8 
-      Height          =   735
-      Left            =   9360
-      Picture         =   "MainForm.frx":4AF3E
-      Top             =   1900
-      Width           =   600
+      Height          =   750
+      Left            =   10560
+      Picture         =   "MainForm.frx":4EFFE
+      Top             =   1905
+      Width           =   645
    End
    Begin VB.Image Image7 
-      Height          =   690
-      Left            =   8640
-      Picture         =   "MainForm.frx":4B6AA
+      Height          =   750
+      Left            =   9840
+      Picture         =   "MainForm.frx":4F812
       Top             =   1920
-      Width           =   630
+      Width           =   570
    End
    Begin VB.Image Image6 
-      Height          =   1305
+      Height          =   1020
       Left            =   0
-      Picture         =   "MainForm.frx":4BD5E
-      Top             =   6120
-      Width           =   4485
+      Picture         =   "MainForm.frx":5000E
+      Top             =   6170
+      Width           =   4470
    End
    Begin VB.Image Image5 
       Height          =   1050
       Left            =   0
-      Picture         =   "MainForm.frx":4F5FA
-      Top             =   5160
-      Width           =   4485
+      Picture         =   "MainForm.frx":52E07
+      Top             =   5145
+      Width           =   4470
    End
    Begin VB.Image Image4 
       Height          =   990
       Left            =   0
-      Picture         =   "MainForm.frx":528B4
+      Picture         =   "MainForm.frx":56008
       Top             =   4200
-      Width           =   4485
+      Width           =   4470
    End
    Begin ComctlLib.ImageList ImageList1 
-      Left            =   480
-      Top             =   8160
+      Left            =   960
+      Top             =   8760
       _ExtentX        =   1005
       _ExtentY        =   1005
       BackColor       =   -2147483643
@@ -521,91 +521,91 @@ Begin VB.Form MainForm
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
          NumListImages   =   22
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":557A1
+            Picture         =   "MainForm.frx":58CCF
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":5ABA3
+            Picture         =   "MainForm.frx":5E905
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":5FFA5
+            Picture         =   "MainForm.frx":6453B
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":653A7
+            Picture         =   "MainForm.frx":6993D
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":6A7A9
+            Picture         =   "MainForm.frx":6ED3F
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":6F953
+            Picture         =   "MainForm.frx":73EE9
             Key             =   ""
          EndProperty
          BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":74AFD
+            Picture         =   "MainForm.frx":79093
             Key             =   ""
          EndProperty
          BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":7A157
+            Picture         =   "MainForm.frx":7E6ED
             Key             =   ""
          EndProperty
          BeginProperty ListImage9 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":7F7B1
+            Picture         =   "MainForm.frx":83D47
             Key             =   ""
          EndProperty
          BeginProperty ListImage10 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":861F7
+            Picture         =   "MainForm.frx":89149
             Key             =   ""
          EndProperty
          BeginProperty ListImage11 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":8CC3D
+            Picture         =   "MainForm.frx":8E54B
             Key             =   ""
          EndProperty
          BeginProperty ListImage12 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":931D3
+            Picture         =   "MainForm.frx":94AE1
             Key             =   ""
          EndProperty
          BeginProperty ListImage13 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":99769
+            Picture         =   "MainForm.frx":9B077
             Key             =   ""
          EndProperty
          BeginProperty ListImage14 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9BB87
+            Picture         =   "MainForm.frx":9C585
             Key             =   ""
          EndProperty
          BeginProperty ListImage15 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9DFA5
+            Picture         =   "MainForm.frx":9DA93
             Key             =   ""
          EndProperty
          BeginProperty ListImage16 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9EBDF
+            Picture         =   "MainForm.frx":9E6B5
             Key             =   ""
          EndProperty
          BeginProperty ListImage17 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9F819
+            Picture         =   "MainForm.frx":9F2D7
             Key             =   ""
          EndProperty
          BeginProperty ListImage18 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A0413
+            Picture         =   "MainForm.frx":9FFC1
             Key             =   ""
          EndProperty
          BeginProperty ListImage19 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A100D
+            Picture         =   "MainForm.frx":A0CAB
             Key             =   ""
          EndProperty
          BeginProperty ListImage20 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A1CCB
+            Picture         =   "MainForm.frx":A1805
             Key             =   ""
          EndProperty
          BeginProperty ListImage21 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A2989
+            Picture         =   "MainForm.frx":A235F
             Key             =   ""
          EndProperty
          BeginProperty ListImage22 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A37CF
+            Picture         =   "MainForm.frx":A31A5
             Key             =   ""
          EndProperty
       EndProperty
@@ -613,16 +613,16 @@ Begin VB.Form MainForm
    Begin VB.Image Image3 
       Height          =   1020
       Left            =   0
-      Picture         =   "MainForm.frx":A4615
+      Picture         =   "MainForm.frx":A3FEB
       Top             =   3240
-      Width           =   4485
+      Width           =   4470
    End
    Begin VB.Image Image2 
-      Height          =   1020
+      Height          =   1125
       Left            =   0
-      Picture         =   "MainForm.frx":A73E5
-      Top             =   2280
-      Width           =   4485
+      Picture         =   "MainForm.frx":A6C64
+      Top             =   2160
+      Width           =   4470
    End
    Begin VB.Image Image1 
       Height          =   15000
@@ -651,7 +651,6 @@ Private Function buttonsOut()
     Set Image7.Picture = ImageList1.ListImages(15).Picture
     Set Image8.Picture = ImageList1.ListImages(17).Picture
     Set Image9.Picture = ImageList1.ListImages(19).Picture
-    Set Image11.Picture = ImageList1.ListImages(21).Picture
     Set Image12.Picture = ImageList1.ListImages(11).Picture
     Set Image13.Picture = ImageList1.ListImages(13).Picture
 End Function
@@ -689,14 +688,14 @@ Private Sub Form_Load()
     msgFadeout
     deployTable
 End Sub
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
 End Sub
 
 Private Sub Image11_Click()
     goSearch
 End Sub
-Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image11.Picture = ImageList1.ListImages(22).Picture
 End Sub
@@ -735,7 +734,7 @@ Private Sub Image2_Click()
 
 End Sub
 
-Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image2.Picture = ImageList1.ListImages(2).Picture
 End Sub
@@ -753,7 +752,7 @@ Private Sub Image3_Click()
     deployTable
 End Sub
 
-Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image3.Picture = ImageList1.ListImages(4).Picture
 End Sub
@@ -771,7 +770,7 @@ Private Sub Image4_Click()
     deployTable
 End Sub
 
-Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image4.Picture = ImageList1.ListImages(6).Picture
 End Sub
@@ -790,7 +789,7 @@ Private Sub Image5_Click()
     deployTable
 End Sub
 
-Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image5.Picture = ImageList1.ListImages(8).Picture
 End Sub
@@ -809,16 +808,16 @@ Private Sub Image6_Click()
     deployTable
 End Sub
 
-Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image6.Picture = ImageList1.ListImages(10).Picture
 End Sub
 
-Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image12.Picture = ImageList1.ListImages(12).Picture
 End Sub
-Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image13.Picture = ImageList1.ListImages(14).Picture
 End Sub
@@ -827,7 +826,7 @@ Private Sub Image7_Click()
     goAdd
 End Sub
 
-Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
      buttonsOut
     Set Image7.Picture = ImageList1.ListImages(16).Picture
 End Sub
@@ -836,7 +835,7 @@ Private Sub Image8_Click()
     goEdit
 End Sub
 
-Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image8.Picture = ImageList1.ListImages(18).Picture
 End Sub
@@ -845,7 +844,7 @@ Private Sub Image9_Click()
     goDel
 End Sub
 
-Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image9.Picture = ImageList1.ListImages(20).Picture
 End Sub
@@ -913,7 +912,7 @@ Private Function goEdit()
 End Function
 
 Private Function goDel()
-Dim x As String
+Dim X As String
     On Error GoTo ErrFound
     
     Dim currentTab As String
