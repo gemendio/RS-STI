@@ -94,7 +94,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "yyyy/MM/dd"
-      Format          =   133103619
+      Format          =   82509827
       CurrentDate     =   40418
    End
    Begin MSComCtl2.DTPicker start_time 
@@ -126,7 +126,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   133103619
+      Format          =   82509827
       UpDown          =   -1  'True
       CurrentDate     =   40421
    End
@@ -159,7 +159,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   133103619
+      Format          =   82509827
       UpDown          =   -1  'True
       CurrentDate     =   40422
    End
@@ -287,6 +287,7 @@ Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y A
 End Sub
 Private Sub Image2_Click()
     MainForm.Label2.Caption = state + "ing schedule was canceled."
+    MainForm.Label2.ForeColor = &HC0&
     MainForm.Label2.Visible = True
     Unload Me
 End Sub

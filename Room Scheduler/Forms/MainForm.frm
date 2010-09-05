@@ -374,9 +374,17 @@ Begin VB.Form MainForm
          EndProperty
       EndProperty
    End
-   Begin ComctlLib.ImageList winButtonsImg 
-      Left            =   7920
+   Begin VB.Image section_user 
+      Height          =   750
+      Left            =   7320
+      Picture         =   "MainForm.frx":442C7
       Top             =   1920
+      Visible         =   0   'False
+      Width           =   1005
+   End
+   Begin ComctlLib.ImageList winButtonsImg 
+      Left            =   12000
+      Top             =   1440
       _ExtentX        =   1005
       _ExtentY        =   1005
       BackColor       =   -2147483643
@@ -385,34 +393,67 @@ Begin VB.Form MainForm
       MaskColor       =   12632256
       _Version        =   327682
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
-         NumListImages   =   6
+         NumListImages   =   14
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":442C7
+            Picture         =   "MainForm.frx":44A8E
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":457F9
+            Picture         =   "MainForm.frx":45FC0
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":46D2B
+            Picture         =   "MainForm.frx":474F2
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":48411
+            Picture         =   "MainForm.frx":48BD8
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":49AF7
+            Picture         =   "MainForm.frx":4A2BE
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":4B009
+            Picture         =   "MainForm.frx":4B7D0
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":4CCE2
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":4DE7C
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage9 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":4F016
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage10 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":4F87C
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage11 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":500E2
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage12 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":509B4
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage13 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":51286
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage14 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
+            Picture         =   "MainForm.frx":51B34
             Key             =   ""
          EndProperty
       EndProperty
    End
    Begin VB.Label Label2 
+      Alignment       =   2  'Center
       BackColor       =   &H00C0E0FF&
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
@@ -423,8 +464,8 @@ Begin VB.Form MainForm
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H000000FF&
-      Height          =   615
+      ForeColor       =   &H0000C000&
+      Height          =   495
       Left            =   120
       TabIndex        =   6
       Top             =   1440
@@ -456,63 +497,63 @@ Begin VB.Form MainForm
    Begin VB.Image Image13 
       Height          =   945
       Left            =   120
-      Picture         =   "MainForm.frx":4C51B
+      Picture         =   "MainForm.frx":523E2
       Top             =   9345
       Width           =   975
    End
    Begin VB.Image Image12 
       Height          =   1245
       Left            =   0
-      Picture         =   "MainForm.frx":4D3E4
+      Picture         =   "MainForm.frx":532AB
       Top             =   7150
       Width           =   4470
    End
    Begin VB.Image Image10 
       Height          =   720
       Left            =   11880
-      Picture         =   "MainForm.frx":50964
+      Picture         =   "MainForm.frx":5682B
       Top             =   1920
       Width           =   4740
    End
    Begin VB.Image Image9 
       Height          =   750
       Left            =   11280
-      Picture         =   "MainForm.frx":51263
+      Picture         =   "MainForm.frx":5712A
       Top             =   1905
       Width           =   510
    End
    Begin VB.Image Image8 
       Height          =   750
       Left            =   10560
-      Picture         =   "MainForm.frx":51A22
+      Picture         =   "MainForm.frx":578E9
       Top             =   1905
       Width           =   645
    End
    Begin VB.Image Image7 
       Height          =   750
       Left            =   9840
-      Picture         =   "MainForm.frx":52236
+      Picture         =   "MainForm.frx":580FD
       Top             =   1920
       Width           =   570
    End
    Begin VB.Image Image6 
       Height          =   1020
       Left            =   0
-      Picture         =   "MainForm.frx":52A32
+      Picture         =   "MainForm.frx":588F9
       Top             =   6170
       Width           =   4470
    End
    Begin VB.Image Image5 
       Height          =   1050
       Left            =   0
-      Picture         =   "MainForm.frx":5582B
+      Picture         =   "MainForm.frx":5B6F2
       Top             =   5145
       Width           =   4470
    End
    Begin VB.Image Image4 
       Height          =   990
       Left            =   0
-      Picture         =   "MainForm.frx":58A2C
+      Picture         =   "MainForm.frx":5E8F3
       Top             =   4200
       Width           =   4470
    End
@@ -529,91 +570,91 @@ Begin VB.Form MainForm
       BeginProperty Images {0713E8C2-850A-101B-AFC0-4210102A8DA7} 
          NumListImages   =   22
          BeginProperty ListImage1 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":5B6F3
+            Picture         =   "MainForm.frx":615BA
             Key             =   ""
          EndProperty
          BeginProperty ListImage2 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":61329
+            Picture         =   "MainForm.frx":671F0
             Key             =   ""
          EndProperty
          BeginProperty ListImage3 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":66F5F
+            Picture         =   "MainForm.frx":6CE26
             Key             =   ""
          EndProperty
          BeginProperty ListImage4 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":6C361
+            Picture         =   "MainForm.frx":72228
             Key             =   ""
          EndProperty
          BeginProperty ListImage5 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":71763
+            Picture         =   "MainForm.frx":7762A
             Key             =   ""
          EndProperty
          BeginProperty ListImage6 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":7690D
+            Picture         =   "MainForm.frx":7C7D4
             Key             =   ""
          EndProperty
          BeginProperty ListImage7 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":7BAB7
+            Picture         =   "MainForm.frx":8197E
             Key             =   ""
          EndProperty
          BeginProperty ListImage8 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":81111
+            Picture         =   "MainForm.frx":86FD8
             Key             =   ""
          EndProperty
          BeginProperty ListImage9 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":8676B
+            Picture         =   "MainForm.frx":8C632
             Key             =   ""
          EndProperty
          BeginProperty ListImage10 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":8BB6D
+            Picture         =   "MainForm.frx":91A34
             Key             =   ""
          EndProperty
          BeginProperty ListImage11 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":90F6F
+            Picture         =   "MainForm.frx":96E36
             Key             =   ""
          EndProperty
          BeginProperty ListImage12 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":97505
+            Picture         =   "MainForm.frx":9D3CC
             Key             =   ""
          EndProperty
          BeginProperty ListImage13 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9DA9B
+            Picture         =   "MainForm.frx":A3962
             Key             =   ""
          EndProperty
          BeginProperty ListImage14 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":9EFA9
+            Picture         =   "MainForm.frx":A4E70
             Key             =   ""
          EndProperty
          BeginProperty ListImage15 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A04B7
+            Picture         =   "MainForm.frx":A637E
             Key             =   ""
          EndProperty
          BeginProperty ListImage16 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A10D9
+            Picture         =   "MainForm.frx":A6FA0
             Key             =   ""
          EndProperty
          BeginProperty ListImage17 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A1CFB
+            Picture         =   "MainForm.frx":A7BC2
             Key             =   ""
          EndProperty
          BeginProperty ListImage18 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A29E5
+            Picture         =   "MainForm.frx":A88AC
             Key             =   ""
          EndProperty
          BeginProperty ListImage19 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A36CF
+            Picture         =   "MainForm.frx":A9596
             Key             =   ""
          EndProperty
          BeginProperty ListImage20 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A4229
+            Picture         =   "MainForm.frx":AA0F0
             Key             =   ""
          EndProperty
          BeginProperty ListImage21 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A4D83
+            Picture         =   "MainForm.frx":AAC4A
             Key             =   ""
          EndProperty
          BeginProperty ListImage22 {0713E8C3-850A-101B-AFC0-4210102A8DA7} 
-            Picture         =   "MainForm.frx":A5BC9
+            Picture         =   "MainForm.frx":ABA90
             Key             =   ""
          EndProperty
       EndProperty
@@ -621,14 +662,14 @@ Begin VB.Form MainForm
    Begin VB.Image Image3 
       Height          =   1020
       Left            =   0
-      Picture         =   "MainForm.frx":A6A0F
+      Picture         =   "MainForm.frx":AC8D6
       Top             =   3240
       Width           =   4470
    End
    Begin VB.Image Image2 
       Height          =   1125
       Left            =   0
-      Picture         =   "MainForm.frx":A9688
+      Picture         =   "MainForm.frx":AF54F
       Top             =   2160
       Width           =   4470
    End
@@ -645,6 +686,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Private Function msgFadeout()
     Timer1.Interval = 5000
     Timer1.Enabled = True
@@ -661,6 +703,7 @@ Private Function buttonsOut()
     Set Image9.Picture = ImageList1.ListImages(19).Picture
     Set Image12.Picture = ImageList1.ListImages(11).Picture
     Set Image13.Picture = ImageList1.ListImages(13).Picture
+    Set section_user.Picture = winButtonsImg.ListImages(7).Picture
 End Function
 
 Private Function deployTable()
@@ -696,14 +739,14 @@ Private Sub Form_Load()
     msgFadeout
     deployTable
 End Sub
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
 End Sub
 
 Private Sub Image11_Click()
     goSearch
 End Sub
-Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image11_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image11.Picture = ImageList1.ListImages(22).Picture
 End Sub
@@ -742,7 +785,7 @@ Private Sub Image2_Click()
 
 End Sub
 
-Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image2.Picture = ImageList1.ListImages(2).Picture
 End Sub
@@ -760,7 +803,7 @@ Private Sub Image3_Click()
     deployTable
 End Sub
 
-Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image3.Picture = ImageList1.ListImages(4).Picture
 End Sub
@@ -778,7 +821,7 @@ Private Sub Image4_Click()
     deployTable
 End Sub
 
-Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image4.Picture = ImageList1.ListImages(6).Picture
 End Sub
@@ -786,6 +829,7 @@ End Sub
 Private Sub Image5_Click()
     Dim sqlScript As String
     Label1.Caption = "Sections"
+    section_user.Visible = True
     
     section_grid.Visible = True
     
@@ -797,7 +841,7 @@ Private Sub Image5_Click()
     deployTable
 End Sub
 
-Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image5_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image5.Picture = ImageList1.ListImages(8).Picture
 End Sub
@@ -816,16 +860,16 @@ Private Sub Image6_Click()
     deployTable
 End Sub
 
-Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image6_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image6.Picture = ImageList1.ListImages(10).Picture
 End Sub
 
-Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image12_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image12.Picture = ImageList1.ListImages(12).Picture
 End Sub
-Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image13_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image13.Picture = ImageList1.ListImages(14).Picture
 End Sub
@@ -834,7 +878,7 @@ Private Sub Image7_Click()
     goAdd
 End Sub
 
-Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image7_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
      buttonsOut
     Set Image7.Picture = ImageList1.ListImages(16).Picture
 End Sub
@@ -843,7 +887,7 @@ Private Sub Image8_Click()
     goEdit
 End Sub
 
-Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image8_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image8.Picture = ImageList1.ListImages(18).Picture
 End Sub
@@ -852,7 +896,7 @@ Private Sub Image9_Click()
     goDel
 End Sub
 
-Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image9_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
     Set Image9.Picture = ImageList1.ListImages(20).Picture
 End Sub
@@ -863,6 +907,16 @@ End Sub
 
 Private Sub SearchStr_KeyPress(KeyAscii As Integer)
      If KeyAscii = 13 Then KeyAscii = 0: goSearch
+End Sub
+
+Private Sub section_user_Click()
+    Load secUsers
+    secUsers.Show vbModal
+End Sub
+
+Private Sub section_user_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    buttonsOut
+    Set section_user.Picture = winButtonsImg.ListImages(8).Picture
 End Sub
 
 Private Sub Timer1_Timer()
@@ -920,7 +974,7 @@ Private Function goEdit()
 End Function
 
 Private Function goDel()
-Dim x As String
+Dim X As String
     On Error GoTo ErrFound
     
     Dim currentTab As String

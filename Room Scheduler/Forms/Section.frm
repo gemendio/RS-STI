@@ -121,12 +121,19 @@ End Sub
 Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
+
+Private Sub Image3_Click()
+    Load secUsers
+    secUsers.Show vbModal
+End Sub
+
 Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image3.Picture = MainForm.winButtonsImg.ListImages(6).Picture
 End Sub
 
 Private Sub Image2_Click()
     MainForm.Label2.Caption = state + "ing section was canceled."
+    MainForm.Label2.ForeColor = &HC0&
     MainForm.Label2.Visible = True
     Unload Me
 End Sub

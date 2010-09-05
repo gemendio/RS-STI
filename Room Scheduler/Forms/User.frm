@@ -5,6 +5,7 @@ Begin VB.Form User
    ClientLeft      =   120
    ClientTop       =   450
    ClientWidth     =   7050
+   ForeColor       =   &H00000000&
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    Picture         =   "User.frx":0000
@@ -148,22 +149,23 @@ Private Sub Form_Load()
     End If
 End Sub
 
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
 
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
 
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
 Private Sub Image2_Click()
     MainForm.Label2.Caption = state + "ing user was canceled."
+    MainForm.Label2.ForeColor = &HC0&
     MainForm.Label2.Visible = True
     Unload Me
 End Sub
