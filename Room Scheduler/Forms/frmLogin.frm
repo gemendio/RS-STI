@@ -139,11 +139,11 @@ Private Sub cmdLogin_Click()
     MainForm.Show
 End Sub
 
-Private Sub cmdLogin_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub cmdLogin_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set cmdLogin.Picture = ImageList1.ListImages(2).Picture
 End Sub
-Private Sub cmdCancel_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub cmdCancel_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
     Set cmdCancel.Picture = ImageList1.ListImages(4).Picture
 End Sub
@@ -156,6 +156,6 @@ Private Function buttonsOut()
     Set cmdCancel.Picture = ImageList1.ListImages(3).Picture
 End Function
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, Y As Single)
     buttonsOut
 End Sub

@@ -20,6 +20,7 @@ Form=Forms\Schedule.frm
 Form=Forms\Room.frm
 Form=Forms\User.frm
 Form=Forms\frmLogin.frm
+Form=Forms\secUsers.frm
 Startup="frmLogin"
 HelpFile=""
 Command32=""

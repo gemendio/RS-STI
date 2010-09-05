@@ -10,7 +10,13 @@ Begin VB.Form Section
    Picture         =   "Section.frx":0000
    ScaleHeight     =   7665
    ScaleWidth      =   7050
-   StartUpPosition =   2  'CenterScreen
+   Begin VB.ListBox List1 
+      Height          =   2790
+      Left            =   1320
+      TabIndex        =   2
+      Top             =   2760
+      Width           =   4455
+   End
    Begin VB.TextBox section_name 
       Appearance      =   0  'Flat
       BorderStyle     =   0  'None
@@ -29,6 +35,13 @@ Begin VB.Form Section
       TabIndex        =   1
       Top             =   1520
       Width           =   3480
+   End
+   Begin VB.Image Image3 
+      Height          =   1005
+      Left            =   530
+      Picture         =   "Section.frx":187E7
+      Top             =   1860
+      Width           =   945
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
@@ -51,14 +64,14 @@ Begin VB.Form Section
    Begin VB.Image Image2 
       Height          =   615
       Left            =   2520
-      Picture         =   "Section.frx":179F2
+      Picture         =   "Section.frx":19083
       Top             =   6600
       Width           =   1695
    End
    Begin VB.Image Image1 
       Height          =   600
       Left            =   720
-      Picture         =   "Section.frx":18744
+      Picture         =   "Section.frx":19DD5
       Top             =   6600
       Width           =   1605
    End
@@ -82,30 +95,36 @@ Private Sub Form_Load()
     'goValidate
     
     If state = "Edit" Then
-         Id = section_grid.Columns("ID")
-         section.Load (Id)
-         Me.section_name.Text = section.Name
+'         Id = section_grid.Columns("ID")
+'         section.Load (Id)
+       '  Me.section_name.Text = section.Name
     Else
         section.Id = 0
     End If
     
 End Sub
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Set Image3.Picture = MainForm.winButtonsImg.ListImages(5).Picture
+End Sub
 
-
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
 
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
 
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
+Private Sub Image3_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Set Image3.Picture = MainForm.winButtonsImg.ListImages(6).Picture
+End Sub
+
 Private Sub Image2_Click()
     MainForm.Label2.Caption = state + "ing section was canceled."
     MainForm.Label2.Visible = True

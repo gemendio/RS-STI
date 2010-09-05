@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
 Begin VB.Form Schedule 
    Caption         =   "Form1"
    ClientHeight    =   7650
@@ -94,7 +94,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "yyyy/MM/dd"
-      Format          =   16252931
+      Format          =   133103619
       CurrentDate     =   40418
    End
    Begin MSComCtl2.DTPicker start_time 
@@ -126,7 +126,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   16252931
+      Format          =   133103619
       UpDown          =   -1  'True
       CurrentDate     =   40421
    End
@@ -159,7 +159,7 @@ Begin VB.Form Schedule
       EndProperty
       CalendarTrailingForeColor=   7171437
       CustomFormat    =   "HH:mm:ss"
-      Format          =   16252931
+      Format          =   133103619
       UpDown          =   -1  'True
       CurrentDate     =   40422
    End
@@ -214,8 +214,8 @@ Public Function LoadRooms()
     Set rs_room = room.GetAll
     room_sched.Clear
     Do While Not rs_room.EOF
-        room_sched.AddItem rs_room.fields("Room Name")
-        room_sched.ItemData(room_sched.NewIndex) = rs_room.fields("ID")
+        room_sched.AddItem rs_room.Fields("Room Name")
+        room_sched.ItemData(room_sched.NewIndex) = rs_room.Fields("ID")
         rs_room.MoveNext
     Loop
 End Function
@@ -225,8 +225,8 @@ Public Function LoadSubjects()
     Set rs_subject = subject.GetAll
     subj_sched.Clear
     Do While Not rs_subject.EOF
-        subj_sched.AddItem rs_subject.fields("Subject Name")
-        subj_sched.ItemData(subj_sched.NewIndex) = rs_subject.fields("ID")
+        subj_sched.AddItem rs_subject.Fields("Subject Name")
+        subj_sched.ItemData(subj_sched.NewIndex) = rs_subject.Fields("ID")
         rs_subject.MoveNext
     Loop
 
@@ -237,8 +237,8 @@ Public Function LoadSections()
     Set rs_section = section.GetAll
     sec_sched.Clear
     Do While Not rs_section.EOF
-        sec_sched.AddItem rs_section.fields("Section Name")
-        sec_sched.ItemData(sec_sched.NewIndex) = rs_section.fields("ID")
+        sec_sched.AddItem rs_section.Fields("Section Name")
+        sec_sched.ItemData(sec_sched.NewIndex) = rs_section.Fields("ID")
         rs_section.MoveNext
     Loop
     
@@ -254,14 +254,14 @@ Private Sub Form_Load()
     LoadRooms
     LoadSubjects
     LoadSections
-    sched_date.value = Format$(Now(), "yyyy/MM/dd")
+    sched_date.Value = Format$(Now(), "yyyy/MM/dd")
     'goValidate
     
     If state = "Edit" Then
          Id = schedule_grid.Columns("ID")
          schedule.Load (Id)
          
-         Me.sched_date.value = schedule.Day
+         Me.sched_date.Value = schedule.Day
          Me.start_time = schedule.StartTime
          Me.end_time = schedule.EndTime
          Me.sec_sched.ListIndex = schedule.SectionId
@@ -273,16 +273,16 @@ Private Sub Form_Load()
 
     
 End Sub
-Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(2).Picture
 End Sub
-Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image1.Picture = MainForm.winButtonsImg.ListImages(1).Picture
 End Sub
-Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(4).Picture
 End Sub
-Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, x As Single, Y As Single)
+Private Sub Image2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image2.Picture = MainForm.winButtonsImg.ListImages(3).Picture
 End Sub
 Private Sub Image2_Click()
@@ -292,9 +292,9 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
-    schedule.Day = Format$(sched_date.value, "yyyy/MM/dd")
-    schedule.StartTime = Format$(start_time.value, "h:mm:ss")
-    schedule.EndTime = Format$(end_time.value, "h:mm:ss")
+    schedule.Day = Format$(sched_date.Value, "yyyy/MM/dd")
+    schedule.StartTime = Format$(start_time.Value, "h:mm:ss")
+    schedule.EndTime = Format$(end_time.Value, "h:mm:ss")
     schedule.RoomId = Me.room_sched.ListIndex + 1
     schedule.SubjectId = Me.subj_sched.ListIndex + 1
     schedule.SectionId = Me.sec_sched.ListIndex + 1
