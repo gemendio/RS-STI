@@ -84,7 +84,7 @@ Attribute VB_Exposed = False
 Private state As String
 Private section_grid As DataGrid
 Private Id As Integer
-Private section As New Model.section
+Private section As New ModelSection
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
@@ -95,9 +95,9 @@ Private Sub Form_Load()
     'goValidate
     
     If state = "Edit" Then
-'         Id = section_grid.Columns("ID")
-'         section.Load (Id)
-       '  Me.section_name.Text = section.Name
+         Id = section_grid.Columns("ID")
+         section.Load (Id)
+         Me.section_name.Text = section.Name
     Else
         section.Id = 0
     End If

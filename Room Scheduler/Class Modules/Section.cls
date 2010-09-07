@@ -11,24 +11,38 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+Option Explicit
+
 Private m_id As Integer
 Private m_name As String
+
+Public Property Let Id(value As Integer)
+    m_id = value
+End Property
 
 Public Property Get Id() As Integer
     Id = m_id
 End Property
 
-Public Property Let Id(value As Integer)
-    m_id = value
+Public Property Let Name(value As String)
+    m_name = value
 End Property
 
 Public Property Get Name() As String
     Name = m_name
 End Property
 
-Public Property Let Name(value As String)
-    m_name = value
-End Property
+Public Sub Delete()
+    On Error GoTo ErrHandler
+        Dim where As String
+        
+        where = "WHERE id = " & Id
+        
+        Call DeleteFromTable("sections", where)
+    Exit Sub
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+End Sub
 
 Public Sub Load(v_id As Integer)
     Dim row As New ADODB.Recordset
@@ -56,7 +70,7 @@ Public Sub Upsert()
     On Error GoTo ErrHandler
         Dim fields(0) As String
         Dim data(0) As Variant
-
+        
         fields(0) = "name"
         data(0) = Name
         
@@ -66,32 +80,17 @@ ErrHandler:
     MsgBox Err.Description, vbExclamation
 End Sub
 
-Public Sub Delete()
-    On Error GoTo ErrHandler
-        Dim where As String
-        
-        where = "WHERE id = " & Id
-        
-        Call DeleteFromTable("sections", where)
-    Exit Sub
-ErrHandler:
-    MsgBox Err.Description, vbExclamation
-End Sub
-
 Public Function GetAll() As ADODB.Recordset
     Dim rs As New ADODB.Recordset
     Dim conn As New ADODB.Connection
-    Dim sqlScript As String
+    
     conn = db
     
     On Error GoTo ErrHandler
         conn.Open
-            
+        
         rs.CursorLocation = adUseClient
-        
-        sqlScript = "SELECT id as ID, name as 'Section Name' FROM sections "
-        
-        rs.Open sqlScript, conn, adOpenStatic, adLockOptimistic
+        rs.Open "SELECT id as ID, name as 'Section Name' FROM sections", conn
         
         Set GetAll = rs
     Exit Function
@@ -102,16 +101,14 @@ End Function
 Public Function search(strSeek As String)
     Dim rs As New ADODB.Recordset
     Dim conn As New ADODB.Connection
-    Dim sqlScript As String
-        
+    
     conn = db
     
     On Error GoTo ErrHandler
         conn.Open
         
         rs.CursorLocation = adUseClient
-        sqlScript = "SELECT id as ID, name as 'Section Name' FROM sections "
-        rs.Open sqlScript, conn
+        rs.Open "SELECT id as ID, name as 'Section Name' FROM sections WHERE name LIKE '%" + strSeek + "%'", conn
         
         Set search = rs
     Exit Function
@@ -119,4 +116,6 @@ ErrHandler:
     MsgBox Err.Description, vbExclamation
     
 End Function
+
+
 

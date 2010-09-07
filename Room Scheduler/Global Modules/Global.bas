@@ -33,6 +33,7 @@ Public Function insertSql(table_name As String, data() As Variant, fields() As S
     insertSql = "INSERT INTO " & table_name _
         & " (" & Join(fields, ", ") & ") " _
         & "VALUES(" & values_sql & ")"
+        MsgBox insertSql
 End Function
 
 Public Function deleteSql(table_name As String, where As String)
