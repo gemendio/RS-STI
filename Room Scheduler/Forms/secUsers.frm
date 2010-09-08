@@ -11,7 +11,7 @@ Begin VB.Form secUsers
    ScaleHeight     =   5400
    ScaleWidth      =   8250
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   1  'CenterOwner
+   StartUpPosition =   2  'CenterScreen
    Begin VB.ListBox allList 
       BeginProperty Font 
          Name            =   "Microsoft Sans Serif"
