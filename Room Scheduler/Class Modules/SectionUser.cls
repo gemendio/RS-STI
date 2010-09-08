@@ -112,4 +112,14 @@ ErrHandler:
     MsgBox Err.Description, vbExclamation
 End Function
 
-
+Public Sub clearSectionUser(section_id As Integer)
+    On Error GoTo ErrHandler
+        Dim where As String
+        
+        where = "WHERE section_id = " & section_id
+        
+        Call DeleteFromTable("section_users", where)
+    Exit Sub
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+End Sub

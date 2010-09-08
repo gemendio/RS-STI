@@ -547,7 +547,7 @@ Begin VB.Form MainForm
       Height          =   1050
       Left            =   0
       Picture         =   "MainForm.frx":5B6F2
-      Top             =   5145
+      Top             =   5160
       Width           =   4470
    End
    Begin VB.Image Image4 
@@ -720,7 +720,7 @@ Private Function deployTable()
                             Set subject_grid.DataSource = subject.GetAll
 
             Case "Sections":
-                            Dim section As New Model.section
+                            Dim section As New ModelSection
                             Set section_grid.DataSource = section.GetAll
 
             Case "Users":
@@ -729,7 +729,7 @@ Private Function deployTable()
 
             Case "Schedules":
                             Dim schedule As New Model.schedule
-                            Set schedule_grid.DataSource = schedule.GetAll
+'                            Set schedule_grid.DataSource = schedule.GetAll
             
             Case Else: Label2.Caption = ""
         End Select
@@ -738,6 +738,7 @@ End Function
 Private Sub Form_Load()
     msgFadeout
     deployTable
+
 End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     buttonsOut
@@ -753,6 +754,7 @@ End Sub
 
 Private Sub Image12_Click()
     Label1.Caption = "Reports"
+    section_user.Visible = False
     
     room_grid.Visible = False
     subject_grid.Visible = False
@@ -774,7 +776,7 @@ End Sub
 
 Private Sub Image2_Click()
     Label1.Caption = "Rooms"
-    
+    section_user.Visible = False
     room_grid.Visible = True
     
     subject_grid.Visible = False
@@ -792,7 +794,7 @@ End Sub
 
 Private Sub Image3_Click()
     Label1.Caption = "Subjects"
-    
+    section_user.Visible = False
     subject_grid.Visible = True
     
     room_grid.Visible = False
@@ -810,7 +812,7 @@ End Sub
 
 Private Sub Image4_Click()
     Label1.Caption = "Users"
-    
+    section_user.Visible = False
     user_grid.Visible = True
     
     subject_grid.Visible = False
@@ -849,6 +851,7 @@ End Sub
 Private Sub Image6_Click()
     Dim sqlScript As String
     Label1.Caption = "Schedules"
+    section_user.Visible = False
     
     schedule_grid.Visible = True
     

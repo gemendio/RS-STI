@@ -40,7 +40,8 @@ Public Sub Load(v_id As Integer)
         conn.Open
 
         row.Open "SELECT * FROM sections WHERE id = " & v_id, conn
-                
+
+        recordCount = row.recordCount
         Id = row(0).value
         Name = row(1).value
         
@@ -120,3 +121,27 @@ ErrHandler:
     
 End Function
 
+Public Function getStudents()
+    Dim rs As New ADODB.Recordset
+    Dim conn As New ADODB.Connection
+    Dim sqlScript As String
+        
+    conn = db
+    
+    On Error GoTo ErrHandler
+        conn.Open
+        
+        rs.CursorLocation = adUseClient
+        sqlScript = "SELECT usr.id AS ID, CONCAT(usr.last_name, ', ', usr.first_name) " & _
+                    "AS 'Student Name' " & _
+                    "FROM users usr " & _
+                    "JOIN section_users su ON usr.id=su.user_id " & _
+                    "WHERE usr.type='Student' AND su.section_id =" & Me.Id
+                    
+        rs.Open sqlScript, conn
+        
+        Set getStudents = rs
+    Exit Function
+ErrHandler:
+    MsgBox Err.Description, vbExclamation
+End Function

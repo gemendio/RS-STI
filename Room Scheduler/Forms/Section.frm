@@ -10,9 +10,28 @@ Begin VB.Form Section
    Picture         =   "Section.frx":0000
    ScaleHeight     =   7665
    ScaleWidth      =   7050
-   Begin VB.ListBox List1 
-      Height          =   2790
+   Begin VB.TextBox sectionIdTxt 
+      Height          =   375
+      Left            =   5280
+      TabIndex        =   4
+      Text            =   "Text1"
+      Top             =   2040
+      Visible         =   0   'False
+      Width           =   975
+   End
+   Begin VB.ListBox secStudentList 
+      BeginProperty Font 
+         Name            =   "Microsoft Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   2700
       Left            =   1320
+      MultiSelect     =   2  'Extended
       TabIndex        =   2
       Top             =   2760
       Width           =   4455
@@ -35,6 +54,27 @@ Begin VB.Form Section
       TabIndex        =   1
       Top             =   1520
       Width           =   3480
+   End
+   Begin VB.Label curren_sec_users 
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      BackStyle       =   0  'Transparent
+      Caption         =   "CURRENT SECTION USERS"
+      BeginProperty Font 
+         Name            =   "Myriad Pro"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000005&
+      Height          =   255
+      Left            =   2520
+      TabIndex        =   3
+      Top             =   2070
+      Width           =   2535
    End
    Begin VB.Image Image3 
       Height          =   1005
@@ -84,24 +124,27 @@ Attribute VB_Exposed = False
 Private state As String
 Private section_grid As DataGrid
 Private Id As Integer
-Private section As New Model.section
+Private m_section As New ModelSection
+Private section_user As New ModelSectionUser
 
 Private Sub Form_Load()
     state = MainForm.Label2.Caption
     Label1.Caption = state + " Section"
     Me.Caption = state + " Section"
     Set section_grid = MainForm.section_grid
-             
-    'goValidate
     
+    'goValidate
     If state = "Edit" Then
-'         Id = section_grid.Columns("ID")
-'         section.Load (Id)
-       '  Me.section_name.Text = section.Name
+         Id = section_grid.Columns("ID")
+         m_section.Load (Id)
+         Me.section_name.Text = m_section.Name
+         LoadSectionStudents
     Else
-        section.Id = 0
+        m_section.Id = 0
     End If
     
+    Me.sectionIdTxt.Text = m_section.Id
+
 End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Set Image3.Picture = MainForm.winButtonsImg.ListImages(5).Picture
@@ -139,12 +182,33 @@ Private Sub Image2_Click()
 End Sub
 
 Private Sub Image1_Click()
-    section.Name = section_name.Text
-    section.Upsert
+    Dim i As Integer
+    Dim rs_secUsr As New ADODB.Recordset
+    
+    m_section.Name = section_name.Text
+    m_section.Upsert
+     
+    section_user.clearSectionUser m_section.Id
+    
+    For i = 0 To secStudentList.ListCount - 1
+            section_user.SectionId = m_section.Id
+            section_user.UserId = secStudentList.ItemData(i)
+            section_user.Upsert
+    Next i
     
     MainForm.Label2.Caption = state + "ing section was successful."
     MainForm.Label2.Visible = True
     Unload Me
 End Sub
-
+Public Function LoadSectionStudents()
+    Dim rs_section As New ADODB.Recordset
+    
+    Set rs_section = m_section.getStudents()
+    secStudentList.Clear
+    Do While Not rs_section.EOF
+        secStudentList.AddItem rs_section.fields("Student Name")
+        secStudentList.ItemData(secStudentList.NewIndex) = rs_section.fields("ID")
+        rs_section.MoveNext
+    Loop
+End Function
 

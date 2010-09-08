@@ -119,16 +119,16 @@ Private Sub cmdCancel_Click()
 End Sub
 
 Private Sub cmdLogin_Click()
-    Dim conn As New Model.Db
+    Dim conn As New Model.db
 
-    conn.Database = txtDB.Text
-    conn.Password = txtPwd.Text
-    conn.Server = txtServer.Text
-    conn.UserName = txtUserName.Text
+'    conn.Database = txtDB.Text
+'    conn.Password = txtPwd.Text
+'   conn.Server = txtServer.Text
+'    conn.UserName = txtUserName.Text
     
     Dim connstr As String
     
-    connstr = conn.ToString
+'   connstr = conn.ToString
     
     Open App.Path & "/conf.ini" For Output As #1
     Print #1, connstr
